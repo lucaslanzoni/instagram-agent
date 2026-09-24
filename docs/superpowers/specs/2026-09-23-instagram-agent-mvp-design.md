@@ -165,7 +165,7 @@ Derivada de `ig-plan`, adaptada de semana para mês e de criador para marca.
 - 8 a 12 posts, mistura de estático e carrossel.
 - Fontes: fichas, histórico dos meses anteriores e, na Tropi, o catálogo (exportação da loja em `referencias/` e produtos novos).
 - Cada linha: número, tema (pilar), formato, fórmula de gancho, ideia específica (um fato, não um assunto), data sugerida.
-- Regras herdadas: não repetir formato em sequência, no máximo 1 a 2 posts de oferta, não repetir tema das últimas duas semanas.
+- Regras herdadas: não repetir o mesmo tema em posts seguidos, no máximo 2 posts seguidos no mesmo formato, no máximo 1 a 2 posts de oferta no mês, não repetir ideia já usada nos dois meses anteriores.
 - Aprovação da pauta no chat antes da produção.
 
 ### 6.5 Produção (skills `ig-carrossel`, `ig-post`, `ig-legenda`, `ig-humano`)
