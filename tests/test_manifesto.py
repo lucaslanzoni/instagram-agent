@@ -97,6 +97,29 @@ def test_legenda_nfd_vira_nfc(tmp_path):
     assert len(m["posts"][0]["legenda"]) == len(legenda_nfc)
 
 
+def test_versao_muda_com_legenda_ou_imagem_e_mantem_ao_republicar(tmp_path):
+    mes = tmp_path / "2026-10"
+    criar_post(mes, "01-a", 1)
+    m1 = montar_manifesto(mes, CLIENTE)
+    versao_1 = m1["posts"][0]["versao"]
+    assert isinstance(versao_1, str)
+    assert len(versao_1) == 12
+
+    m2 = montar_manifesto(mes, CLIENTE)  # republicar sem mudar nada
+    assert m2["posts"][0]["versao"] == versao_1
+
+    (mes / "posts" / "01-a" / "legenda.md").write_text(
+        "Legenda nova.\n\nLink na bio.", encoding="utf-8"
+    )
+    m3 = montar_manifesto(mes, CLIENTE)
+    versao_2 = m3["posts"][0]["versao"]
+    assert versao_2 != versao_1
+
+    (mes / "posts" / "01-a" / "1.jpg").write_bytes(b"outro jpg")
+    m4 = montar_manifesto(mes, CLIENTE)
+    assert m4["posts"][0]["versao"] != versao_2
+
+
 def test_publicar_copia_imagens_e_atualiza_indice(tmp_path):
     mes = tmp_path / "clientes" / "demo" / "2026-10"
     criar_post(mes, "01-a", 1, formato="estatico", n_imagens=1)

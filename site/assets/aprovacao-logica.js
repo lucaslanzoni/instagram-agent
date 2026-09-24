@@ -61,8 +61,25 @@ export function legendaFinal(post, estado) {
 }
 
 export function limparEstado(estado, posts) {
-  const ids = new Set(posts.map((p) => p.id));
-  return Object.fromEntries(Object.entries(estado || {}).filter(([id]) => ids.has(id)));
+  const porId = new Map(posts.map((p) => [p.id, p]));
+  return Object.fromEntries(
+    Object.entries(estado || {}).filter(([id, entrada]) => {
+      const post = porId.get(id);
+      if (!post) return false;
+      if (post.versao && entrada.versao !== post.versao) return false;
+      return true;
+    })
+  );
+}
+
+export function carimbarVersao(estado, posts) {
+  const porId = new Map(posts.map((p) => [p.id, p]));
+  return Object.fromEntries(
+    Object.entries(estado || {}).map(([id, entrada]) => {
+      const post = porId.get(id);
+      return post?.versao ? [id, { ...entrada, versao: post.versao }] : [id, { ...entrada }];
+    })
+  );
 }
 
 export function resumo(estado, posts) {

@@ -1,7 +1,7 @@
 import { exigirSessao, armazenamento } from './sessao.js';
 import {
   validarManifesto, escolherMes, definirStatus, definirComentario, editarLegenda,
-  legendaFinal, limparEstado, resumo, montarAprovacao, arquivosDoPost,
+  legendaFinal, limparEstado, carimbarVersao, resumo, montarAprovacao, arquivosDoPost,
 } from './aprovacao-logica.js';
 import { baixarBlob, baixarJSON } from './baixar.js';
 
@@ -18,6 +18,10 @@ function formatarData(data) {
   if (!data) return '';
   const [, m, d] = data.split('-');
   return `${d}/${m}`;
+}
+
+function comVersao(url, post) {
+  return post.versao ? `${url}?v=${post.versao}` : url;
 }
 
 function el(tag, texto, classe) {
@@ -60,16 +64,18 @@ async function iniciar({ email, cliente }) {
   }
   const posts = manifesto.posts;
   const chave = `ia_aprov_${cliente}_${mes}`;
-  let estado = limparEstado(armazenamento.ler(chave) || {}, posts);
+  let estado = carimbarVersao(limparEstado(armazenamento.ler(chave) || {}, posts), posts);
   let aberto = null;
 
   $('cliente-nome').textContent = manifesto.nome || cliente;
   $('cliente-mes').textContent = formatarMes(mes);
   $('cliente-arroba').textContent = `${manifesto.arroba || ''} · ${posts.length} publicações`;
   $('aviso-memoria').hidden = armazenamento.persistente();
+  $('enviar').hidden = false;
+  $('baixar-tudo').hidden = false;
 
   function salvar(novo) {
-    estado = novo;
+    estado = carimbarVersao(novo, posts);
     armazenamento.gravar(chave, estado);
     desenharStatus();
   }
@@ -92,7 +98,7 @@ async function iniciar({ email, cliente }) {
 
   function miniatura(post) {
     const img = document.createElement('img');
-    img.src = base + post.imagens[0];
+    img.src = comVersao(base + post.imagens[0], post);
     img.alt = post.alt || post.tema || '';
     img.loading = 'lazy';
     return img;
@@ -140,7 +146,7 @@ async function iniciar({ email, cliente }) {
     const c = $('carrossel');
     c.replaceChildren(...aberto.imagens.map((src, n) => {
       const img = document.createElement('img');
-      img.src = base + src;
+      img.src = comVersao(base + src, aberto);
       img.alt = n === 0 ? aberto.alt || '' : `Slide ${n + 1}`;
       return img;
     }));
@@ -200,7 +206,7 @@ async function iniciar({ email, cliente }) {
       for (const post of lista) {
         const arquivos = arquivosDoPost(post, estado);
         for (const img of arquivos.imagens) {
-          const r = await fetch(base + img.src);
+          const r = await fetch(comVersao(base + img.src, post));
           if (!r.ok) throw new Error(`${r.status} em ${img.src}`);
           zip.file(img.nome, await r.blob());
         }

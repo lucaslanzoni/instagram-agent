@@ -6,6 +6,7 @@ Uso
 """
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -25,6 +26,15 @@ def _imagens(pasta):
     return [f"{pasta.name}/{n}.jpg" for n in numeros]
 
 
+def _versao(legenda, pasta, imagens):
+    h = hashlib.sha256()
+    h.update(legenda.encode("utf-8"))
+    for relativo in imagens:
+        nome = relativo.rsplit("/", 1)[-1]
+        h.update((pasta / nome).read_bytes())
+    return h.hexdigest()[:12]
+
+
 def ler_post(pasta):
     pasta = Path(pasta)
     meta = json.loads((pasta / "post.json").read_text(encoding="utf-8"))
@@ -36,6 +46,7 @@ def ler_post(pasta):
         if arquivo_legenda.exists()
         else ""
     )
+    imagens = _imagens(pasta)
     return {
         "id": pasta.name,
         "numero": meta.get("numero"),
@@ -44,7 +55,8 @@ def ler_post(pasta):
         "data_sugerida": meta.get("data_sugerida", ""),
         "alt": meta.get("alt", ""),
         "legenda": legenda,
-        "imagens": _imagens(pasta),
+        "imagens": imagens,
+        "versao": _versao(legenda, pasta, imagens),
     }
 
 

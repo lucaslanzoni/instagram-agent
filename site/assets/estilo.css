@@ -21,6 +21,7 @@ button { font: inherit; cursor: pointer; }
 .botao-secundario { background: transparent; color: var(--fg); border: 1px solid var(--linha); padding: 10px 14px; font-weight: 600; }
 .botao:disabled, .botao-secundario:disabled { opacity: .5; cursor: default; }
 .aviso { border: 1px solid var(--acento); padding: 12px 14px; margin: 12px 0; font-size: .9rem; }
+.aviso-fixo { font-size: .8rem; margin: 8px 0 20px; }
 .rodape { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--linha); color: var(--muted); font-size: .75rem; }
 
 /* acesso */
@@ -101,4 +102,21 @@ dialog.janela::backdrop { background: rgba(0, 0, 0, .8); }
   .principal { padding: 8px 0; }
   .janela-corpo { grid-template-columns: 1fr; }
   .painel { max-height: none; }
+
+  .celula[data-status="aprovado"]::after,
+  .celula[data-status="revisar"]::after {
+    content: "Aprovado";
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    background: rgba(10, 10, 10, .7);
+    color: var(--fg);
+    font-size: .7rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .celula[data-status="revisar"]::after {
+    content: "Revisar";
+    border: 1px solid var(--acento);
+  }
 }
