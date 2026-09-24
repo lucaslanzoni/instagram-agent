@@ -12,14 +12,16 @@ Entrada: `clientes/<slug>/respostas.json` (exportado pelo formulário do site) e
 
 ## Passos
 
-1. Ler `respostas.json` e `cliente.json`. Listar perguntas sem resposta. Se faltar
+1. Lucas baixa `respostas-<cliente>-<data>.json` pelo formulário do site e salva
+   como `clientes/<slug>/respostas.json`.
+2. Ler `respostas.json` e `cliente.json`. Listar perguntas sem resposta. Se faltar
    alguma de `marca_frase`, `empatia_*`, `voz_palavras`, `voz_frases` ou
    `posic_diferencial`, mostrar a lista a Lucas e perguntar se segue com lacunas.
-2. Ler o site (`cliente.json` campo `site`) com WebFetch: o que vende, categorias,
+3. Ler o site (`cliente.json` campo `site`) com WebFetch: o que vende, categorias,
    palavras que a marca já usa. Guardar as frases reais do site como exemplos.
-3. Se `cliente.json` tiver `pasta_marca`, ler o `CLAUDE.md` e os documentos de
+4. Se `cliente.json` tiver `pasta_marca`, ler o `CLAUDE.md` e os documentos de
    branding dessa pasta. Eles têm prioridade sobre inferências.
-4. Escrever `marca.md` a partir do molde, com este mapa:
+5. Escrever `marca.md` a partir do molde, com este mapa:
 
    | Pergunta | Seção |
    |---|---|
@@ -32,7 +34,7 @@ Entrada: `clientes/<slug>/respostas.json` (exportado pelo formulário do site) e
    | todas | 6. Temas de conteúdo (3 a 5 pilares) |
    | leitura de Claude | 7. Insights, cada item marcado "(inferência)" |
 
-5. Escrever `voz.md` a partir do molde, com este mapa:
+6. Escrever `voz.md` a partir do molde, com este mapa:
 
    | Pergunta | Seção |
    |---|---|
@@ -43,12 +45,12 @@ Entrada: `clientes/<slug>/respostas.json` (exportado pelo formulário do site) e
    | voz_frases | ## Exemplos, formato `- Ruim: <frase> \| Bom: <frase>` |
 
    Pares ruim/bom escritos por Claude levam "(Claude)" no fim da linha.
-6. Regras: não inventar número, prêmio ou depoimento; o que faltar vira
+7. Regras: não inventar número, prêmio ou depoimento; o que faltar vira
    `{{a preencher}}`. Não mudar os títulos `## Proibidas` e `## Exemplos`: o
    humanizador lê o primeiro pelo título exato.
-7. Comparar com o material de marca existente e listar a Lucas, em bullets, onde
+8. Comparar com o material de marca existente e listar a Lucas, em bullets, onde
    as respostas divergem ou deixam de fora algo que já está documentado. Isso
    mede se o formulário captura a marca.
-8. Conferir: `uv run python -c "from ferramentas.humanizar import ler_proibidas; print(ler_proibidas(open('clientes/<slug>/voz.md').read()))"`
+9. Conferir: `uv run python -c "from ferramentas.humanizar import ler_proibidas; print(ler_proibidas(open('clientes/<slug>/voz.md').read()))"`
    devolve a lista esperada.
-9. Mostrar a Lucas um resumo das duas fichas e ajustar. Commit das fichas.
+10. Mostrar a Lucas um resumo das duas fichas e ajustar. Commit das fichas.
