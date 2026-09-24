@@ -1,48 +1,54 @@
 # Sistema visual da Tropi para slides
 
-Fonte canônica: `~/Documents/Freelas/tropi-discos/marca/` (virada para a paleta Café e Goiaba em andamento; os slides seguem a identidade "Duas
-Estações") e o carrossel de referência `pecas/carrossel/afim-ze-ibarra/`. Não
-copiar o CSS para este repositório: os slides apontam para ele.
+Identidade padrão: **Café e Goiaba** (virada de marca de set/2026). Fonte canônica:
+`~/Documents/Freelas/tropi-discos/marca/` (tokens, logo final, elementos, guia de
+ilustração). Não copiar ativos de marca para este repositório: os slides apontam
+para lá.
 
-## Cabeçalho de todo slide
+A identidade anterior (laranja, "duas estações", `pecas/carrossel/.../base-retrato.css`)
+só vale para o post de transição que anuncia a mudança. Nenhum outro post usa o laranja.
 
-```html
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=Archivo:wght@700;900&display=swap" rel="stylesheet">
-<link href="file:///Users/Lucas/Documents/Freelas/tropi-discos/pecas/carrossel/afim-ze-ibarra/base-retrato.css" rel="stylesheet">
-</head>
-```
+## Regras de Lucas (2026-09-24)
 
-## Fundos (classe no `<body>`)
+- Todo post novo sai 100% na identidade Café e Goiaba. Posts fixados no perfil
+  (ex.: guia de setup) e guias (ex.: cuidado com o disco) sempre na identidade nova.
+- Ilustração em vez de foto improvisada. Quando o post fala de um objeto ou gesto
+  (toca-discos, caixa, amplificador, mão segurando o disco), usar ilustração no
+  estilo da marca. O que não existir em `marca/elementos/` é criado com
+  `marca/elementos/gerador/desenho.js`, seguindo `marca/elementos/GUIA-ILUSTRACAO.md`
+  (skill `ilustracao-tropi` no repo da Tropi). Fone de ouvido, escova e outros
+  objetos do vocabulário da marca podem ser criados. Nota musical isolada não.
+- Elemento novo vai primeiro para uma página em `marca/estudos/` e só entra em
+  `marca/elementos/` depois da aprovação de Lucas.
+- Disco de catálogo nunca com fundo branco de foto de produto. Usar o recorte
+  (capa + vinil, sem fundo) com `.claude/skills/carrossel-disco/scripts/prepare_images.py`
+  do repo da Tropi, conferindo o resultado. Se o recorte falhar (capa escura ou
+  full-bleed), usar só a capa quadrada. Última opção: buscar uma imagem só da capa.
+- Nada de imagem solta, torta ou sem função no slide.
+- Texto da nova identidade sem literalidade: o mascote é "o mascote" (não "disco
+  com olhinhos"); o coqueiro serve para dizer que a marca ficou mais tropical, e
+  aparece sozinho (`coqueiro-02-simples`), sem o sol.
 
-- `bg-papel`: capa e slides de conteúdo (texto grafite).
-- `bg-sunset` (com `<div class="rays"></div>`): citação, fecho e pedido.
-- `bg-night`: alternativa escura para conteúdo, no máximo 1 por carrossel.
-- `bg-orange`: destaque pontual, no máximo 1 por carrossel.
+## Como montar um slide
 
-## Estrutura de cada slide
-
-- Topo: `<div class="row"><span class="brand">Tropi Discos</span> ... </div>`.
-  Na capa e no pedido, à direita vai um `kicker`; nos demais, o contador
-  `<span class="count"><b>02</b> / 06</span>`.
-- Meio: `<div class="block">` com `kicker`, `ttl` ou `ttl-xl`, `body`, `quote` +
-  `cite`, `names` + `tag`, `cta`.
-- Rodapé: `<div class="row"><span class="handle">@tropi_discos</span></div>`; na
-  capa, acrescentar `<span class="handle" style="opacity:.8">arrasta →</span>`.
-
-## Imagem de produto (disco)
-
-Usar a skill `carrossel-disco` para baixar a capa e gerar `disco-cutout.png`
-(`~/.claude/skills/carrossel-disco/scripts/prepare_images.py`), salvando na pasta
-do post. Na capa: `<img class="cutout" src="disco-cutout.png" style="width:920px">`.
+- Cabeçalho: fontes Syne e Hanken Grotesk (Google Fonts) e o CSS
+  `file:///Users/Lucas/Code/freelas/instagram-agent/clientes/tropi/cafe-goiaba.css`,
+  que importa `marca/tokens/cores.css` e `marca/tokens/tipografia.css`.
+- Fundo no `<body>`: `bg-creme` (padrão), `bg-goiaba`, `bg-oliva`, `bg-cafe`.
+- Topo: logo final (`marca/logo/final/logo/tropi-logo-cafe.svg`; `-creme` no fundo
+  café) + `rotulo` ou `count`.
+- Meio: `bloco` com `rotulo`, `ttl-xl` ou `ttl`, `texto`, `tags`, `cta`, `itens`.
+- Rodapé: `@tropi_discos`; na capa de carrossel, "arrasta →".
+- Elementos prontos: `<img class="elemento" src=".../marca/elementos/<tipo>/fundo-<fundo>/<arquivo>.svg">`,
+  sempre da pasta do mesmo fundo do slide.
+- Elementos desenhados na hora: `<div class="desenho" data-elemento="<nome>" data-fundo="<fundo>">`
+  e, no fim do body, `desenho.js` + `marca/estudos/elementos-posts-outubro.js` +
+  `TropiPosts.desenharTodos()`.
+- Disco recortado: `<img class="cutout" src="disco-cutout.png">`.
 
 ## Regras da marca que valem nos slides
 
 - Sem preço (varia com promoção).
-- Sem exclamação.
 - Sem "não é X, é Y".
 - Fala de obra, artista e edição, nunca de "oferta".
-- No slide de pedido de post de disco, o `taghint` no canto inferior direito marca
-  onde ancorar a tag de produto no app.
+- Um elemento protagonista por slide; mascote e sol podem dividir sem competir.

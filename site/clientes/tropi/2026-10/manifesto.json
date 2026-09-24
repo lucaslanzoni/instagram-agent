@@ -10,7 +10,7 @@
       "tema": "Setup",
       "formato": "carrossel",
       "data_sugerida": "2026-10-06",
-      "alt": "Capa do guia de setup da Tropi Discos: título Monte seu som de vinil sobre fundo creme, com a indicação 4 níveis, do basicão ao completo.",
+      "alt": "Capa do guia de setup da Tropi Discos em fundo creme: título Monte seu som de vinil e a ilustração de uma vitrola no traço da marca.",
       "legenda": "4 jeitos de montar o som pra ouvir vinil, do mais simples ao completão.\n\nToda montagem faz três coisas: ler o disco, amplificar o sinal e tocar nas caixas. O que muda é quantos aparelhos dividem esse trabalho. Arrasta pro lado e vê onde você se encaixa.\n\nBase: guia de setups da @revistanoize.\n\n#vinil #setupdevinil #tocadiscos #tropidiscos",
       "imagens": [
         "01-guia-de-setup/1.jpg",
@@ -21,7 +21,7 @@
         "01-guia-de-setup/6.jpg",
         "01-guia-de-setup/7.jpg"
       ],
-      "versao": "1e11df0f906a"
+      "versao": "f8a1d894a6f1"
     },
     {
       "id": "02-a-tropi-esta-mudando",
@@ -42,7 +42,7 @@
       "tema": "Cuidado",
       "formato": "carrossel",
       "data_sugerida": "2026-10-13",
-      "alt": "Capa do guia de cuidado com vinil da Tropi Discos: título Seu disco dura décadas sobre fundo creme, com a indicação 5 cuidados que fazem diferença.",
+      "alt": "Capa do guia de cuidado com vinil da Tropi Discos em fundo creme: título Seu disco dura décadas e a ilustração de uma mão segurando o disco pela borda.",
       "legenda": "5 cuidados simples que fazem o vinil durar décadas.\n\nQuase todo estrago vem de hábito: calor, poeira e dedo no lugar errado. Guardar em pé, segurar pela borda e limpar antes de tocar já resolvem a maior parte.\n\nSalva esse post pra consultar depois.\n\n#vinil #cuidadocomvinil #colecaodevinil #tropidiscos",
       "imagens": [
         "03-cuidado-com-os-discos/1.jpg",
@@ -54,7 +54,7 @@
         "03-cuidado-com-os-discos/7.jpg",
         "03-cuidado-com-os-discos/8.jpg"
       ],
-      "versao": "90f0a867ee05"
+      "versao": "31f8d7c0761b"
     },
     {
       "id": "04-lembrete-do-site",
@@ -62,12 +62,12 @@
       "tema": "Site",
       "formato": "estatico",
       "data_sugerida": "2026-10-16",
-      "alt": "Lembrete da Tropi Discos em fundo laranja: Dá uma olhada no site, com Seleção Tropi, Garimpo e lançamentos, 5% a partir de 2 discos e frete grátis acima de R$300.",
+      "alt": "Lembrete da Tropi Discos em fundo goiaba: Dá uma olhada no site, com Seleção Tropi, Garimpo e lançamentos, 5% a partir de 2 discos e frete grátis acima de R$300, e o mascote piscando.",
       "legenda": "A loja inteira está no site: Seleção Tropi, Garimpo, lançamentos e os discos do NRC.\n\nComprando 2 discos ou mais, entra 5% de desconto. Acima de R$300, o frete é por nossa conta. E todo pedido vai com um brinde da casa.\n\nLink na bio.\n\n#tropidiscos #vinil #musicabrasileira",
       "imagens": [
         "04-lembrete-do-site/1.jpg"
       ],
-      "versao": "c6e27506a945"
+      "versao": "2ee7d1793e0d"
     },
     {
       "id": "05-nova-cara-da-tropi",
@@ -75,8 +75,8 @@
       "tema": "Marca",
       "formato": "carrossel",
       "data_sugerida": "2026-10-20",
-      "alt": "Capa do post A nova cara da Tropi em fundo creme, com o logo novo da Tropi Discos e o mascote disco com olhinhos cantando.",
-      "legenda": "A Tropi está de cara nova: paleta café e goiaba, mascote, sol-disco e coqueiro.\n\nA loja continua a mesma: vinil de música brasileira, novo e garimpado, escolhido um a um. Mudou o jeito de aparecer por aqui, e o site vem logo atrás.\n\nConta pra gente nos comentários o que achou!\n\n#tropidiscos #vinil #musicabrasileira",
+      "alt": "Capa do post A nova cara da Tropi em fundo creme, com o logo novo da Tropi Discos e o mascote cantando.",
+      "legenda": "A Tropi está de cara nova: cores novas, um mascote e um jeito mais tropical de aparecer por aqui.\n\nA loja continua a mesma: vinil de música brasileira, novo e garimpado, escolhido um a um. Mudou a cara, e o site vem logo atrás.\n\nConta pra gente nos comentários o que achou!\n\n#tropidiscos #vinil #musicabrasileira",
       "imagens": [
         "05-nova-cara-da-tropi/1.jpg",
         "05-nova-cara-da-tropi/2.jpg",
@@ -85,7 +85,7 @@
         "05-nova-cara-da-tropi/5.jpg",
         "05-nova-cara-da-tropi/6.jpg"
       ],
-      "versao": "91fc8da913c7"
+      "versao": "7f7fa657307d"
     },
     {
       "id": "06-dica-rapida-borda",
@@ -93,12 +93,12 @@
       "tema": "Cuidado",
       "formato": "estatico",
       "data_sugerida": "2026-10-22",
-      "alt": "Dica rápida da Tropi Discos em fundo creme: segure o disco pela borda. Ao lado, a capa de Erasmo Esteves, de Erasmo Carlos, e o mascote piscando.",
-      "legenda": "Dica rápida da Tropi: segure o disco pela borda.\n\nO dedo deixa gordura nos sulcos, e é por ali que a agulha passa. Borda e selo do centro são os únicos lugares seguros. Na foto, Erasmo Esteves, o disco que Erasmo Carlos deixou em rascunhos e gravações, finalizado por Pupillo e Marcus Preto. Está nos destaques da loja.\n\nSalva pra lembrar depois.\n\n#vinil #cuidadocomvinil #erasmocarlos #tropidiscos",
+      "alt": "Dica rápida da Tropi Discos em fundo creme: segure o disco pela borda, com a ilustração de uma mão segurando o vinil só pela borda.",
+      "legenda": "Dica rápida da Tropi: segure o disco pela borda.\n\nO dedo deixa gordura nos sulcos, e é por ali que a agulha passa. Borda e selo do centro são os únicos lugares seguros. Parece detalhe, mas é o que mantém o chiado longe.\n\nSalva pra lembrar depois.\n\n#vinil #cuidadocomvinil #colecaodevinil #tropidiscos",
       "imagens": [
         "06-dica-rapida-borda/1.jpg"
       ],
-      "versao": "17bb9999403a"
+      "versao": "3fc9612014f7"
     },
     {
       "id": "07-musica-brasileira",
@@ -106,12 +106,12 @@
       "tema": "Mensagem",
       "formato": "estatico",
       "data_sugerida": "2026-10-30",
-      "alt": "Frase da casa em fundo café: A música brasileira é a melhor de todas. Na vitrola, Elza Soares, 1974.",
+      "alt": "Frase da casa em fundo café: A música brasileira é a melhor de todas. Abaixo, o LP Elza Soares, 1974, em vinil laranja.",
       "legenda": "A música brasileira é a melhor de todas. Frase da casa, e a gente sustenta.\n\nPra provar, Elza Soares em 1974: arranjo e regência de Ed Lincoln, \"Bom Dia Portela\", \"Pranto Livre\" e uma cozinha rítmica de cair o queixo. Está nos destaques da loja.\n\nLink na bio.\n\n#musicabrasileira #elzasoares #vinil #tropidiscos",
       "imagens": [
         "07-musica-brasileira/1.jpg"
       ],
-      "versao": "2314a1ef8754"
+      "versao": "a81a107bbf38"
     },
     {
       "id": "08-chegou-na-loja",
@@ -119,7 +119,7 @@
       "tema": "Novidade",
       "formato": "carrossel",
       "data_sugerida": "2026-10-28",
-      "alt": "Capa do post Chegou na loja em fundo creme: o LP Emicida Racional VL2, Mesmas Cores e Mesmos Valores, com a revista Noize edição 172.",
+      "alt": "Capa do post Chegou na loja em fundo creme: o LP Emicida Racional VL2, Mesmas Cores e Mesmos Valores, em vinil verde ao lado da capa.",
       "legenda": "Emicida Racional VL2: Mesmas Cores & Mesmos Valores chegou na loja.\n\nSeis anos depois de AmarElo, Emicida homenageia os Racionais MC's e o álbum Cores e Valores, de 2014. São dez faixas com parceiros de longa data, como DJ Nyack, Rashid e Projota, e estreias como o maestro Henrique Albino e o pianista Amaro Freitas.\n\nLP verde opaco com a revista Noize, edição 172, que traz entrevista e material exclusivo.\n\nLink na bio.\n\n#emicida #racionais #rapnacional #vinil #tropidiscos",
       "imagens": [
         "08-chegou-na-loja/1.jpg",
@@ -128,7 +128,7 @@
         "08-chegou-na-loja/4.jpg",
         "08-chegou-na-loja/5.jpg"
       ],
-      "versao": "179c387d80a9"
+      "versao": "8c0e0b4de800"
     },
     {
       "id": "09-data-importante",
@@ -136,12 +136,12 @@
       "tema": "Data",
       "formato": "estatico",
       "data_sugerida": "2026-10-26",
-      "alt": "Post de data em fundo goiaba: 26 de outubro, Milton faz aniversário. Capa do disco Tarde, de Milton Nascimento, e o sol-disco.",
+      "alt": "Post de data em fundo goiaba: 26 de outubro, Milton faz aniversário. O LP Tarde, de Milton Nascimento, em vinil verde ao lado da capa, e o sol-disco.",
       "legenda": "Hoje é aniversário de Milton Nascimento, que chega aos 84 anos.\n\nPra celebrar, a dica é Tarde: gravado em 2007 e lançado pelo NRC, reúne \"Clube da Esquina\", \"Nada Será Como Antes\" e \"Saudade dos Aviões da Panair\" em formato acústico, com três faixas inéditas. LP verde translúcido com capa dos OSGEMEOS.\n\nLink na bio.\n\n#miltonnascimento #clubedaesquina #vinil #tropidiscos",
       "imagens": [
         "09-data-importante/1.jpg"
       ],
-      "versao": "126e59227468"
+      "versao": "e5c1204acba3"
     }
   ]
 }
