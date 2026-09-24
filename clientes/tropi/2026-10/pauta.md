@@ -8,11 +8,13 @@ Aprovada por Lucas em 2026-09-24. Tom institucional: templates padrão para novi
 | 02 | 09/10 | estatico | Marca | G8 | A Tropi está mudando: aviso curto de que a marca está evoluindo | Lucas |
 | 03 | 13/10 | carrossel | Cuidado | G6 | Como cuidar bem dos seus discos: guardar em pé, capa interna, longe de luz e calor, limpeza antes de tocar | Lucas |
 | 04 | 16/10 | estatico | Site | G8 | Lembrete da loja: tropidiscos.com.br, Seleção Tropi e Garimpo, 5% a partir de 2 discos, frete grátis acima de R$300 | Lucas; site |
-| 05 | 20/10 | carrossel | Marca | G8 | A nova cara da Tropi: prévia da paleta Café e Goiaba, do mascote disco com olhinhos, do sol-disco e do coqueiro, sem mostrar o logo | Lucas; `marca/` da Tropi |
-| 06 | 23/10 | estatico | Cuidado | G1 | Dica rápida: um cartão, uma dica (segurar o disco pela borda). Modelo de série | Lucas |
-| 07 | 27/10 | estatico | Mensagem | G4 | Frase da casa: "a música brasileira é a melhor de todas", como cartão de manifesto | Lucas; formulário (voz_defende) |
-| 08 | 30/10 | carrossel | Novidade | G8 | Chegou na loja: modelo para disco novo a partir do link do produto (skill carrossel-disco) | Lucas; catálogo |
-| 09 | a definir | estatico | Data | G8 | Modelo de data importante, com o texto da data a preencher quando ela aparecer | Lucas |
+| 05 | 20/10 | carrossel | Marca | G8 | A nova cara da Tropi: paleta Café e Goiaba, logo novo, mascote, sol-disco e coqueiro; fecha com Xande Canta Caetano (Destaques) | Lucas; `marca/` da Tropi |
+| 06 | 22/10 | estatico | Cuidado | G1 | Dica rápida: segurar o disco pela borda, com Erasmo Esteves, de Erasmo Carlos (Destaques). Modelo de série | Lucas |
+| 07 | 30/10 | estatico | Mensagem | G4 | Frase da casa: "a música brasileira é a melhor de todas", com Elza Soares, 1974 (Destaques) na legenda | Lucas; formulário (voz_defende) |
+| 08 | 28/10 | carrossel | Novidade | G8 | Chegou na loja: Emicida Racional VL2, Mesmas Cores & Mesmos Valores (Destaques). Modelo para disco novo | Lucas; catálogo |
+| 09 | 26/10 | estatico | Data | G8 | Aniversário de Milton Nascimento (84 anos), com Tarde, pelo NRC (Destaques). Modelo de data importante | Lucas |
 
+Ajuste de 2026-09-24: posts 05 a 09 na identidade Café e Goiaba com discos da seção Destaques do site; datas de 06 a 09 reordenadas para não somar 3 estáticos seguidos.
+Ordem por data: 01 (06/10), 02 (09/10), 03 (13/10), 04 (16/10), 05 (20/10), 06 (22/10), 09 (26/10), 08 (28/10), 07 (30/10).
 Regras conferidas: nenhum tema repetido em posts seguidos; no máximo 2 posts seguidos no mesmo formato; 2 posts puxam venda (04 e 08).
 Interpretação a confirmar: "Mensagem" (post 07) lido como cartão de frase da casa.
