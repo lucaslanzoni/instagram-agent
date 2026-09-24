@@ -25,6 +25,11 @@ só vale para o post de transição que anuncia a mudança. Nenhum outro post us
   do repo da Tropi, conferindo o resultado. Se o recorte falhar (capa escura ou
   full-bleed), usar só a capa quadrada. Última opção: buscar uma imagem só da capa.
 - Nada de imagem solta, torta ou sem função no slide.
+- Mão com disco: recusada (2026-09-24). Para gesto com o disco, usar só a ilustração do vinil (`disco`).
+- Capa de disco: quando o recorte capa + vinil não fica limpo, usar a capa quadrada pura. Fontes que
+  funcionaram: a imagem "só capa" do produto no site da Tropi (quando existe), a Wikipédia (capa
+  original) e a página do produto no Noize Record Club (Shopify, `/products/<slug>.json`), cortando
+  só o quadrado da capa. Nunca capa com vinil do lado quando a imagem não estiver limpa.
 - Texto da nova identidade sem literalidade: o mascote é "o mascote" (não "disco
   com olhinhos"); o coqueiro serve para dizer que a marca ficou mais tropical, e
   aparece sozinho (`coqueiro-02-simples`), sem o sol.

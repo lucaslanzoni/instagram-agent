@@ -42,7 +42,7 @@
       "tema": "Cuidado",
       "formato": "carrossel",
       "data_sugerida": "2026-10-13",
-      "alt": "Capa do guia de cuidado com vinil da Tropi Discos em fundo creme: título Seu disco dura décadas e a ilustração de uma mão segurando o disco pela borda.",
+      "alt": "Capa do guia de cuidado com vinil da Tropi Discos em fundo creme: título Seu disco dura décadas e a ilustração de um disco de vinil.",
       "legenda": "5 cuidados simples que fazem o vinil durar décadas.\n\nQuase todo estrago vem de hábito: calor, poeira e dedo no lugar errado. Guardar em pé, segurar pela borda e limpar antes de tocar já resolvem a maior parte.\n\nSalva esse post pra consultar depois.\n\n#vinil #cuidadocomvinil #colecaodevinil #tropidiscos",
       "imagens": [
         "03-cuidado-com-os-discos/1.jpg",
@@ -54,7 +54,7 @@
         "03-cuidado-com-os-discos/7.jpg",
         "03-cuidado-com-os-discos/8.jpg"
       ],
-      "versao": "31f8d7c0761b"
+      "versao": "942e8425ee2e"
     },
     {
       "id": "04-lembrete-do-site",
@@ -93,12 +93,12 @@
       "tema": "Cuidado",
       "formato": "estatico",
       "data_sugerida": "2026-10-22",
-      "alt": "Dica rápida da Tropi Discos em fundo creme: segure o disco pela borda, com a ilustração de uma mão segurando o vinil só pela borda.",
+      "alt": "Dica rápida da Tropi Discos em fundo creme: segure o disco pela borda, com a ilustração de um disco de vinil.",
       "legenda": "Dica rápida da Tropi: segure o disco pela borda.\n\nO dedo deixa gordura nos sulcos, e é por ali que a agulha passa. Borda e selo do centro são os únicos lugares seguros. Parece detalhe, mas é o que mantém o chiado longe.\n\nSalva pra lembrar depois.\n\n#vinil #cuidadocomvinil #colecaodevinil #tropidiscos",
       "imagens": [
         "06-dica-rapida-borda/1.jpg"
       ],
-      "versao": "3fc9612014f7"
+      "versao": "ea61e3b685be"
     },
     {
       "id": "07-musica-brasileira",
@@ -106,12 +106,12 @@
       "tema": "Mensagem",
       "formato": "estatico",
       "data_sugerida": "2026-10-30",
-      "alt": "Frase da casa em fundo café: A música brasileira é a melhor de todas. Abaixo, o LP Elza Soares, 1974, em vinil laranja.",
+      "alt": "Frase da casa em fundo café: A música brasileira é a melhor de todas. Abaixo, a capa do disco Elza Soares, de 1974.",
       "legenda": "A música brasileira é a melhor de todas. Frase da casa, e a gente sustenta.\n\nPra provar, Elza Soares em 1974: arranjo e regência de Ed Lincoln, \"Bom Dia Portela\", \"Pranto Livre\" e uma cozinha rítmica de cair o queixo. Está nos destaques da loja.\n\nLink na bio.\n\n#musicabrasileira #elzasoares #vinil #tropidiscos",
       "imagens": [
         "07-musica-brasileira/1.jpg"
       ],
-      "versao": "a81a107bbf38"
+      "versao": "bfbbcfc2d723"
     },
     {
       "id": "08-chegou-na-loja",
@@ -136,12 +136,12 @@
       "tema": "Data",
       "formato": "estatico",
       "data_sugerida": "2026-10-26",
-      "alt": "Post de data em fundo goiaba: 26 de outubro, Milton faz aniversário. O LP Tarde, de Milton Nascimento, em vinil verde ao lado da capa, e o sol-disco.",
+      "alt": "Post de data em fundo goiaba: 26 de outubro, Milton faz aniversário. A capa do disco Tarde, de Milton Nascimento, e o sol-disco.",
       "legenda": "Hoje é aniversário de Milton Nascimento, que chega aos 84 anos.\n\nPra celebrar, a dica é Tarde: gravado em 2007 e lançado pelo NRC, reúne \"Clube da Esquina\", \"Nada Será Como Antes\" e \"Saudade dos Aviões da Panair\" em formato acústico, com três faixas inéditas. LP verde translúcido com capa dos OSGEMEOS.\n\nLink na bio.\n\n#miltonnascimento #clubedaesquina #vinil #tropidiscos",
       "imagens": [
         "09-data-importante/1.jpg"
       ],
-      "versao": "e5c1204acba3"
+      "versao": "7ab94d921c7a"
     }
   ]
 }
