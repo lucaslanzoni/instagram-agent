@@ -6,3 +6,7 @@ __pycache__/
 node_modules/
 tests/fixtures/**/*.jpg
 tests/fixtures/**/*.png
+clientes/**/posts/**/*.jpg
+clientes/**/posts/**/*.png
+clientes/**/rascunho.txt
+clientes/**/texto.md
