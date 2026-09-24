@@ -1,3 +1,4 @@
+import json
 import re
 from pathlib import Path
 
@@ -41,3 +42,26 @@ def test_molde_de_marca_tem_secoes():
         "## 7. Insights",
     ]:
         assert secao in texto
+
+
+def test_existem_as_sete_skills():
+    nomes = {p.parent.name for p in SKILLS}
+    assert nomes == {
+        "ig-onboarding",
+        "ig-pauta",
+        "ig-carrossel",
+        "ig-post",
+        "ig-legenda",
+        "ig-humano",
+        "ig-entrega",
+    }
+
+
+def test_cliente_tropi_valido():
+    cliente = json.loads(
+        (RAIZ / "clientes" / "tropi" / "cliente.json").read_text(encoding="utf-8")
+    )
+    for campo in ["slug", "nome", "arroba", "site", "pasta_marca", "visual"]:
+        assert cliente.get(campo), campo
+    assert cliente["slug"] == "tropi"
+    assert (RAIZ / cliente["visual"]).exists()
