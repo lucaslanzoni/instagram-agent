@@ -84,6 +84,11 @@ function iniciar({ email, cliente }) {
     $('enviado').hidden = false;
   });
 
+  window.addEventListener('pagehide', () => {
+    for (const [id, area] of campos) respostas = { ...respostas, [id]: area.value };
+    salvar();
+  });
+
   $('aviso-memoria').hidden = armazenamento.persistente();
   atualizarProgresso();
 }
