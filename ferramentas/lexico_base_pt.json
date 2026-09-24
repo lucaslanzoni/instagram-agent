@@ -1,0 +1,58 @@
+{
+  "versao": "1.0",
+  "nota": "Léxico inicial em PT-BR. Invisíveis e tipográficos são corrigidos sozinhos; palavras e frases são trocadas por equivalentes simples; estruturas só são sinalizadas para reescrita. A tradução completa do léxico de Jake é a Fase 2.",
+  "invisiveis": [
+    {"cp": "U+200B", "nome": "ESPAÇO DE LARGURA ZERO", "acao": "apagar"},
+    {"cp": "U+200C", "nome": "NÃO-JUNTOR DE LARGURA ZERO", "acao": "apagar"},
+    {"cp": "U+200D", "nome": "JUNTOR DE LARGURA ZERO", "acao": "apagar"},
+    {"cp": "U+2060", "nome": "JUNTOR DE PALAVRA", "acao": "apagar"},
+    {"cp": "U+FEFF", "nome": "BOM / ESPAÇO SEM QUEBRA DE LARGURA ZERO", "acao": "apagar"},
+    {"cp": "U+00AD", "nome": "HÍFEN SUAVE", "acao": "apagar"},
+    {"cp": "U+180E", "nome": "SEPARADOR DE VOGAL MONGOL", "acao": "apagar"},
+    {"cp": "U+E0000-U+E007F", "nome": "CARACTERES DE TAG UNICODE", "acao": "apagar"},
+    {"cp": "U+00A0", "nome": "ESPAÇO SEM QUEBRA", "acao": "espaco"},
+    {"cp": "U+202F", "nome": "ESPAÇO ESTREITO SEM QUEBRA", "acao": "espaco"},
+    {"cp": "U+2007", "nome": "ESPAÇO DE ALGARISMO", "acao": "espaco"},
+    {"cp": "U+2009", "nome": "ESPAÇO FINO", "acao": "espaco"},
+    {"cp": "U+200A", "nome": "ESPAÇO CAPILAR", "acao": "espaco"}
+  ],
+  "tipograficos": [
+    {"de": "—", "nome": "TRAVESSÃO", "para": ", "},
+    {"de": "–", "nome": "MEIA-RISCA", "para": "-"},
+    {"de": "“", "nome": "ASPA CURVA DE ABERTURA", "para": "\""},
+    {"de": "”", "nome": "ASPA CURVA DE FECHAMENTO", "para": "\""},
+    {"de": "‘", "nome": "APÓSTROFO CURVO DE ABERTURA", "para": "'"},
+    {"de": "’", "nome": "APÓSTROFO CURVO DE FECHAMENTO", "para": "'"},
+    {"de": "…", "nome": "RETICÊNCIAS DE UM CARACTERE", "para": "..."},
+    {"de": "•", "nome": "MARCADOR", "para": "-"}
+  ],
+  "frases": [
+    {"buscar": "no mundo de hoje", "trocar": "hoje", "familia": "aberturas"},
+    {"buscar": "nos dias de hoje", "trocar": "hoje", "familia": "aberturas"},
+    {"buscar": "no cenário atual", "trocar": "hoje", "familia": "aberturas"},
+    {"buscar": "vale ressaltar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "vale destacar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "é importante destacar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "é importante ressaltar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "é importante lembrar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "sem sombra de dúvidas", "trocar": "", "familia": "muletas"},
+    {"buscar": "não é exagero dizer que", "trocar": "", "familia": "muletas"},
+    {"buscar": "mergulhar de cabeça", "trocar": "entrar", "familia": "verbos"}
+  ],
+  "palavras": [
+    {"buscar": "alavancar", "trocar": "aumentar", "familia": "verbos"},
+    {"buscar": "potencializar", "trocar": "aumentar", "familia": "verbos"},
+    {"buscar": "desvendar", "trocar": "entender", "familia": "verbos"},
+    {"buscar": "robusto", "trocar": "sólido", "familia": "adjetivos"},
+    {"buscar": "crucial", "trocar": "importante", "familia": "adjetivos"},
+    {"buscar": "imprescindível", "trocar": "necessário", "familia": "adjetivos"}
+  ],
+  "estruturas": [
+    {"id": "nao-e-x-e-y", "regex": "(?i)\\bnão (?:é|era|foi) (?:só |apenas |somente )?[^.!?\\n]{2,60}[,;.] (?:é|era|foi)\\b", "nome": "\"Não é X, é Y\"", "correcao": "Dizer a única coisa que importa. Cortar a metade de preparação."},
+    {"id": "nao-so-mas-tambem", "regex": "(?i)\\bnão (?:só|apenas|somente)\\b[^.!?\\n]{2,80}\\bmas também\\b", "nome": "\"Não só X, mas também Y\"", "correcao": "Separar em duas frases ou cortar a metade mais fraca."},
+    {"id": "nao-e-sobre", "regex": "(?i)\\bnão é sobre [^.!?\\n]{2,60}[,;.] é sobre\\b", "nome": "\"Não é sobre X, é sobre Y\"", "correcao": "Afirmar direto o que é."},
+    {"id": "exclamacoes", "regex": "!{2,}", "nome": "Exclamações em sequência", "correcao": "No máximo uma, e só se a marca usa."},
+    {"id": "revelacao", "regex": "(?im)^(?:o resultado|a verdade|o segredo|a resposta)\\?\\s*$", "nome": "Pergunta de revelação (\"O resultado?\")", "correcao": "Dizer o resultado sem suspense fabricado."},
+    {"id": "superlativos", "regex": "(?i)\\b(?:incrível|imperdível|sensacional|surpreendente|arrasador)\\b", "nome": "Superlativo vazio", "correcao": "Trocar por um fato: número, nome, detalhe."}
+  ]
+}
