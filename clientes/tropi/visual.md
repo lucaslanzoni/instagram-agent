@@ -1,7 +1,7 @@
 # Sistema visual da Tropi para slides
 
-Fonte canônica: `~/Documents/Freelas/tropi-discos/branding/` (identidade "Duas
-Estações") e o carrossel de referência `branding/carrossel/afim-ze-ibarra/`. Não
+Fonte canônica: `~/Documents/Freelas/tropi-discos/marca/` (virada para a paleta Café e Goiaba em andamento; os slides seguem a identidade "Duas
+Estações") e o carrossel de referência `pecas/carrossel/afim-ze-ibarra/`. Não
 copiar o CSS para este repositório: os slides apontam para ele.
 
 ## Cabeçalho de todo slide
@@ -11,7 +11,7 @@ copiar o CSS para este repositório: os slides apontam para ele.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=Archivo:wght@700;900&display=swap" rel="stylesheet">
-<link href="file:///Users/Lucas/Documents/Freelas/tropi-discos/branding/carrossel/afim-ze-ibarra/base-retrato.css" rel="stylesheet">
+<link href="file:///Users/Lucas/Documents/Freelas/tropi-discos/pecas/carrossel/afim-ze-ibarra/base-retrato.css" rel="stylesheet">
 </head>
 ```
 
