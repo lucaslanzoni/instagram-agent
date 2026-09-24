@@ -9,10 +9,10 @@ Adaptado de `ig-human` (Jake Schincariol, MIT; ver THIRD_PARTY.md).
 
 ## Passos
 
-1. Salvar o rascunho num arquivo temporário na pasta do post (`rascunho.txt`).
-2. Rodar:
+1. Salvar o rascunho em `clientes/<slug>/<mes>/posts/<id>/rascunho.txt`.
+2. Rodar, da raiz do repositório:
 
-       uv run python -m ferramentas.humanizar rascunho.txt --voz clientes/<slug>/voz.md --saida rascunho.txt --relatorio
+       uv run python -m ferramentas.humanizar clientes/<slug>/<mes>/posts/<id>/rascunho.txt --voz clientes/<slug>/voz.md --saida clientes/<slug>/<mes>/posts/<id>/rascunho.txt --relatorio
 
 3. Ler o relatório:
    - Invisíveis, tipográficos e léxico já foram corrigidos no arquivo.
@@ -23,8 +23,8 @@ Adaptado de `ig-human` (Jake Schincariol, MIT; ver THIRD_PARTY.md).
 4. Rodar de novo até sair com código 0 (nenhuma proibida). Estrutura que continuar
    sinalizada só fica se Claude conseguir justificar em uma linha por que ela é da
    voz da marca; registrar a justificativa no chat.
-5. Apagar `rascunho.txt` depois de copiar o texto final para o slide ou para
-   `legenda.md`.
+5. Apagar `clientes/<slug>/<mes>/posts/<id>/rascunho.txt` depois de copiar o
+   texto final para o slide ou para `legenda.md`.
 
 ## Limites
 
