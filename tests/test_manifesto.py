@@ -1,4 +1,5 @@
 import json
+import unicodedata
 
 import pytest
 
@@ -85,6 +86,15 @@ def test_legenda_vazia_e_recusada(tmp_path):
     criar_post(mes, "01-a", 1, legenda="   ")
     with pytest.raises(ValueError, match="legenda.md vazia"):
         montar_manifesto(mes, CLIENTE)
+
+
+def test_legenda_nfd_vira_nfc(tmp_path):
+    mes = tmp_path / "2026-10"
+    legenda_nfc = "Edição de coleção."
+    criar_post(mes, "01-a", 1, legenda=unicodedata.normalize("NFD", legenda_nfc))
+    m = montar_manifesto(mes, CLIENTE)
+    assert m["posts"][0]["legenda"] == legenda_nfc
+    assert len(m["posts"][0]["legenda"]) == len(legenda_nfc)
 
 
 def test_publicar_copia_imagens_e_atualiza_indice(tmp_path):

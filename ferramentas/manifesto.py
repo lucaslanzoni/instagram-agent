@@ -10,6 +10,7 @@ import json
 import re
 import shutil
 import sys
+import unicodedata
 from pathlib import Path
 
 FORMATOS = {"carrossel": (2, 10), "estatico": (1, 1)}
@@ -29,7 +30,9 @@ def ler_post(pasta):
     meta = json.loads((pasta / "post.json").read_text(encoding="utf-8"))
     arquivo_legenda = pasta / "legenda.md"
     legenda = (
-        arquivo_legenda.read_text(encoding="utf-8").strip()
+        unicodedata.normalize(
+            "NFC", arquivo_legenda.read_text(encoding="utf-8")
+        ).strip()
         if arquivo_legenda.exists()
         else ""
     )
