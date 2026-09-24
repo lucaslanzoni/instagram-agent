@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conteúdo do mês</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/estilo.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="lateral">
+      <p class="marca"><a href="../">Voltar</a> · Lucas Lanzoni · Conteúdo</p>
+      <h1 id="cliente-nome" class="titulo"></h1>
+      <p id="cliente-mes" class="muted"></p>
+      <p id="cliente-arroba" class="muted"></p>
+      <p id="resumo" class="resumo"></p>
+      <p id="aviso-memoria" class="aviso" hidden>Este navegador não está guardando as avaliações. Envie antes de fechar a página.</p>
+      <div class="acoes">
+        <button id="enviar" class="botao" type="button">Enviar aprovação</button>
+        <button id="baixar-tudo" class="botao-secundario" type="button">Baixar o mês</button>
+      </div>
+      <p id="enviado" class="aviso" hidden>Arquivo baixado. Mande esse arquivo para o Lucas por WhatsApp ou e-mail.</p>
+      <ol id="lista" class="lista"></ol>
+    </aside>
+    <main class="principal">
+      <p id="mensagem" class="mensagem aviso" hidden></p>
+      <div id="grade" class="grade"></div>
+    </main>
+  </div>
+
+  <dialog id="janela" class="janela">
+    <div class="janela-corpo">
+      <div class="palco">
+        <div id="carrossel" class="carrossel"></div>
+        <button id="anterior" class="seta anterior" type="button" aria-label="Slide anterior">&lsaquo;</button>
+        <button id="proxima" class="seta proxima" type="button" aria-label="Próximo slide">&rsaquo;</button>
+        <div id="pontos" class="pontos"></div>
+      </div>
+      <div class="painel">
+        <p id="post-info" class="muted"></p>
+        <h2 id="post-tema" class="titulo"></h2>
+        <div class="status-botoes" id="status-botoes">
+          <button type="button" data-status="aprovado">Aprovado</button>
+          <button type="button" data-status="revisar">Revisar</button>
+          <button type="button" data-status="descartado">Descartado</button>
+        </div>
+        <label for="comentario" id="rotulo-comentario" hidden>O que precisa mudar?</label>
+        <textarea id="comentario" hidden></textarea>
+        <label for="legenda">Legenda (pode editar)</label>
+        <textarea id="legenda" rows="10"></textarea>
+        <div class="acoes">
+          <button id="copiar" class="botao-secundario" type="button">Copiar legenda</button>
+          <button id="baixar-post" class="botao-secundario" type="button">Baixar este post</button>
+          <button id="fechar" class="botao" type="button">Fechar</button>
+        </div>
+        <p id="copiado" class="muted" hidden>Legenda copiada.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script type="module" src="../assets/aprovacao.js"></script>
+</body>
+</html>
