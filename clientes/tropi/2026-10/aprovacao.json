@@ -1,0 +1,50 @@
+{
+  "cliente": "tropi",
+  "mes": "2026-10",
+  "email": "lucaslanzoni.s@gmail.com",
+  "gerado_em": "2026-09-24T21:31:42.181Z",
+  "resumo": {
+    "aprovado": 9,
+    "revisar": 0,
+    "descartado": 0,
+    "pendente": 0
+  },
+  "posts": {
+    "02-a-tropi-esta-mudando": {
+      "status": "aprovado",
+      "versao": "873f95e8bcc1"
+    },
+    "01-guia-de-setup": {
+      "status": "aprovado",
+      "versao": "f8a1d894a6f1"
+    },
+    "03-cuidado-com-os-discos": {
+      "status": "aprovado",
+      "versao": "942e8425ee2e"
+    },
+    "04-lembrete-do-site": {
+      "status": "aprovado",
+      "versao": "2ee7d1793e0d"
+    },
+    "05-nova-cara-da-tropi": {
+      "status": "aprovado",
+      "versao": "7f7fa657307d"
+    },
+    "06-dica-rapida-borda": {
+      "status": "aprovado",
+      "versao": "ea61e3b685be"
+    },
+    "07-musica-brasileira": {
+      "status": "aprovado",
+      "versao": "bfbbcfc2d723"
+    },
+    "08-chegou-na-loja": {
+      "status": "aprovado",
+      "versao": "8c0e0b4de800"
+    },
+    "09-data-importante": {
+      "status": "aprovado",
+      "versao": "7ab94d921c7a"
+    }
+  }
+}
