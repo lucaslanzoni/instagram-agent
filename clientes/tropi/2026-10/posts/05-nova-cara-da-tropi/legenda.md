@@ -1,7 +1,7 @@
-A Tropi está de cara nova: cores novas, um mascote e um jeito mais tropical de aparecer por aqui.
+A Tropi trocou de roupa! 🌴
 
-A loja continua a mesma: vinil de música brasileira, novo e garimpado, escolhido um a um. Mudou a cara, e o site vem logo atrás.
+Cor nova, mascote novo, site novo e um pé ainda mais no tropical. Os discos continuam escolhidos um a um, do jeito de sempre.
 
-Conta pra gente nos comentários o que achou!
+Conta pra gente nos comentários o que achou.
 
 #tropidiscos #vinil #musicabrasileira
