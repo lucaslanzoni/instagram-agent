@@ -3,7 +3,7 @@ import {
   validarManifesto, escolherMes, definirStatus, definirComentario, editarLegenda,
   legendaFinal, limparEstado, carimbarVersao, resumo, montarAprovacao, arquivosDoPost,
 } from './aprovacao-logica.js';
-import { baixarBlob, baixarJSON } from './baixar.js';
+import { baixarBlob, baixarJSON, podeCompartilhar, compartilharArquivos } from './baixar.js';
 
 const $ = (id) => document.getElementById(id);
 const ROTULO_FORMATO = { carrossel: 'Carrossel', estatico: 'Post estático' };
@@ -66,6 +66,10 @@ async function iniciar({ email, cliente }) {
   const chave = `ia_aprov_${cliente}_${mes}`;
   let estado = carimbarVersao(limparEstado(armazenamento.ler(chave) || {}, posts), posts);
   let aberto = null;
+  let arquivosDoAberto = null; // JPGs do post aberto, prontos para o menu de compartilhar do celular
+  // Só no celular (tela de toque): Chrome e Safari de computador também têm o menu, e lá o .zip é melhor.
+  const celularCompartilha = typeof navigator.canShare === 'function' && typeof navigator.share === 'function'
+    && matchMedia('(pointer: coarse)').matches;
 
   $('cliente-nome').textContent = manifesto.nome || cliente;
   $('cliente-mes').textContent = formatarMes(mes);
@@ -73,6 +77,8 @@ async function iniciar({ email, cliente }) {
   $('aviso-memoria').hidden = armazenamento.persistente();
   $('enviar').hidden = false;
   $('baixar-tudo').hidden = false;
+  $('aviso-zip').hidden = !celularCompartilha;
+  if (celularCompartilha) $('baixar-post').textContent = 'Salvar imagens';
 
   function salvar(novo) {
     estado = carimbarVersao(novo, posts);
@@ -161,6 +167,7 @@ async function iniciar({ email, cliente }) {
     $('legenda').value = legendaFinal(aberto, estado);
     $('comentario').value = estado[aberto.id]?.comentario || '';
     $('copiado').hidden = true;
+    prepararArquivos(aberto);
     desenharStatus();
     desenharPontos();
     $('janela').showModal();
@@ -221,7 +228,39 @@ async function iniciar({ email, cliente }) {
     }
   }
 
-  $('baixar-post').addEventListener('click', () => baixarZip([aberto], `${cliente}-${mes}-${aberto.id}.zip`, $('baixar-post')));
+  // Baixa os JPGs do post assim que ele abre: o iOS só abre o menu de compartilhar
+  // se o pedido sair direto do toque, sem esperar download.
+  async function prepararArquivos(post) {
+    arquivosDoAberto = null;
+    if (!celularCompartilha) return;
+    try {
+      const arquivos = [];
+      for (const [n, src] of post.imagens.entries()) {
+        const r = await fetch(comVersao(base + src, post));
+        if (!r.ok) throw new Error(`${r.status} em ${src}`);
+        arquivos.push(new File([await r.blob()], `${cliente}-${post.id}-${n + 1}.jpg`, { type: 'image/jpeg' }));
+      }
+      if (aberto === post) arquivosDoAberto = arquivos;
+    } catch (erro) {
+      console.error(erro);
+    }
+  }
+
+  $('baixar-post').addEventListener('click', () => {
+    if (celularCompartilha) {
+      if (!arquivosDoAberto) {
+        $('copiado').textContent = 'Preparando as imagens. Toque de novo em um instante.';
+        $('copiado').hidden = false;
+        return;
+      }
+      if (podeCompartilhar(arquivosDoAberto)) {
+        compartilharArquivos(arquivosDoAberto, `Post ${String(aberto.numero).padStart(2, '0')}`)
+          .catch((erro) => mostrarMensagem('Não foi possível abrir o menu para salvar as imagens. Tente de novo.', erro));
+        return;
+      }
+    }
+    baixarZip([aberto], `${cliente}-${mes}-${aberto.id}.zip`, $('baixar-post'));
+  });
   $('baixar-tudo').addEventListener('click', () => baixarZip(posts, `${cliente}-${mes}.zip`, $('baixar-tudo')));
   $('enviar').addEventListener('click', () => {
     baixarJSON(`aprovacao-${cliente}-${mes}.json`, montarAprovacao({ cliente, mes, email, estado, posts, agora: new Date() }));
