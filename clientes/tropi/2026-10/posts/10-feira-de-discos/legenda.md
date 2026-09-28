@@ -1,7 +1,7 @@
-A Tropi também sai da tela: a gente anda pelas feiras de disco de São Paulo, garimpando junto com quem ama vinil.
+Tem Tropi nas feiras de disco de São Paulo, garimpando junto com quem ama vinil.
 
-Valeu à @garimpavinilfeiradediscos pela parceria na organização e a {{@ a confirmar}} por fazer essa feira acontecer. Foi bom demais!
+Valeu à @garimpavinilfeiradediscos por organizar a feira e receber a gente. Foi bom demais!
 
-Segue a @tropi_discos pra saber das próximas feiras.
+Segue a @tropi_discos pra saber das próximas.
 
 #feiradediscos #vinil #tropidiscos #saopaulo
