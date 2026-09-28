@@ -4,7 +4,7 @@ Foi o Tim que trouxe o soul pro Brasil. Voltou dos Estados Unidos nos anos 60 co
 
 E ele fez tudo do jeito dele: brigou com gravadora, montou o próprio selo, a Seroma, e lançou disco independente numa época em que quase ninguém fazia isso. Os Racional, que muita gente torceu o nariz na época, hoje são disputados em qualquer feira.
 
-Pra mim, Lucas, o Tim é um dos artistas da vida. Não tem festa aqui em casa sem Primavera, Gostava Tanto de Você ou Do Leme ao Pontal.
+O Tim é um dos artistas do coração da Tropi. Não tem festa por aqui sem Primavera, Gostava Tanto de Você ou Do Leme ao Pontal.
 
 Qual é o seu disco preferido do Tim? Conta aqui nos comentários.
 
