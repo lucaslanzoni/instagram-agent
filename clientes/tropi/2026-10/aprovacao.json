@@ -4,7 +4,7 @@
   "email": "lucaslanzoni.s@gmail.com",
   "gerado_em": "2026-09-24T21:31:42.181Z",
   "resumo": {
-    "aprovado": 9,
+    "aprovado": 12,
     "revisar": 0,
     "descartado": 0,
     "pendente": 0
@@ -28,7 +28,8 @@
     },
     "05-nova-cara-da-tropi": {
       "status": "aprovado",
-      "versao": "7f7fa657307d"
+      "versao": "1bb042a9dd64",
+      "origem": "versão com print do site no slide 4, aprovada por Lucas no chat em 2026-09-28"
     },
     "06-dica-rapida-borda": {
       "status": "aprovado",
@@ -45,6 +46,21 @@
     "09-data-importante": {
       "status": "aprovado",
       "versao": "7ab94d921c7a"
+    },
+    "10-feira-de-discos": {
+      "status": "aprovado",
+      "versao": "ecc746a6e84f",
+      "origem": "aprovado por Lucas no chat em 2026-09-28"
+    },
+    "11-tim-maia-discos": {
+      "status": "aprovado",
+      "versao": "985ae745fcb8",
+      "origem": "aprovado por Lucas no chat em 2026-09-28"
+    },
+    "12-tim-maia-video": {
+      "status": "aprovado",
+      "versao": "74952ac35d96",
+      "origem": "aprovado por Lucas no chat em 2026-09-28"
     }
   }
 }
