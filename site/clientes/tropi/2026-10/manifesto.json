@@ -142,6 +142,19 @@
         "09-data-importante/1.jpg"
       ],
       "versao": "7ab94d921c7a"
+    },
+    {
+      "id": "10-feira-de-discos",
+      "numero": 10,
+      "tema": "Evento",
+      "formato": "estatico",
+      "data_sugerida": "",
+      "alt": "Lucas, da Tropi Discos, escolhendo discos numa feira em São Paulo, com a capa de No Tempo da Intolerância, da Elza Soares, em primeiro plano; o mascote da marca no canto da foto.",
+      "legenda": "A Tropi também sai da tela: a gente anda pelas feiras de disco de São Paulo, garimpando junto com quem ama vinil.\n\nValeu à @garimpavinilfeiradediscos pela parceria na organização e a {{@ a confirmar}} por fazer essa feira acontecer. Foi bom demais!\n\nSegue a @tropi_discos pra saber das próximas feiras.\n\n#feiradediscos #vinil #tropidiscos #saopaulo",
+      "imagens": [
+        "10-feira-de-discos/1.jpg"
+      ],
+      "versao": "7bc1cbcaa9ce"
     }
   ]
 }

@@ -44,7 +44,7 @@ def test_molde_de_marca_tem_secoes():
         assert secao in texto
 
 
-def test_existem_as_sete_skills():
+def test_existem_as_skills():
     nomes = {p.parent.name for p in SKILLS}
     assert nomes == {
         "ig-onboarding",
@@ -54,6 +54,7 @@ def test_existem_as_sete_skills():
         "ig-legenda",
         "ig-humano",
         "ig-entrega",
+        "ig-post-foto",
     }
 
 

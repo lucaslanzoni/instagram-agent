@@ -13,6 +13,7 @@ Aprovada por Lucas em 2026-09-24. Tom institucional: templates padrão para novi
 | 07 | 30/10 | estatico | Mensagem | G4 | Frase da casa: "a música brasileira é a melhor de todas", com Elza Soares, 1974 (Destaques) na legenda | Lucas; formulário (voz_defende) |
 | 08 | 28/10 | carrossel | Novidade | G8 | Chegou na loja: Emicida Racional VL2, Mesmas Cores & Mesmos Valores (Destaques). Modelo para disco novo | Lucas; catálogo |
 | 09 | 26/10 | estatico | Data | G8 | Aniversário de Milton Nascimento (84 anos), com Tarde, pelo NRC (Destaques). Modelo de data importante | Lucas |
+| 10 | a definir | estatico | Evento | G8 | Post com foto (modelo encarte): a Tropi nas feiras de disco de São Paulo; agradecimento à Garimpa Vinil na legenda | Lucas (foto do evento) |
 
 Ajuste de 2026-09-24: posts 05 a 09 na identidade Café e Goiaba com discos da seção Destaques do site; datas de 06 a 09 reordenadas para não somar 3 estáticos seguidos.
 Ordem por data: 01 (06/10), 02 (09/10), 03 (13/10), 04 (16/10), 05 (20/10), 06 (22/10), 09 (26/10), 08 (28/10), 07 (30/10).

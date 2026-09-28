@@ -57,3 +57,8 @@ só vale para o post de transição que anuncia a mudança. Nenhum outro post us
 - Sem "não é X, é Y".
 - Fala de obra, artista e edição, nunca de "oferta".
 - Um elemento protagonista por slide; mascote e sol podem dividir sem competir.
+
+## Posts com foto
+
+Modelos aprovados (foto-cheia, encarte, meio-a-meio, adesivos), fontes de imagem permitidas e gerador em
+`clientes/tropi/modelos-foto/` (skill `ig-post-foto`). O modelo com a foto dentro do vinil foi descartado.
