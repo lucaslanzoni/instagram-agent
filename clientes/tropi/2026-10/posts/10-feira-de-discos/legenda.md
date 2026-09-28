@@ -1,4 +1,4 @@
-Tem Tropi nas feiras de disco de São Paulo, garimpando junto com quem ama vinil.
+Tem Tropi expondo nas feiras de disco de São Paulo: banca montada, vinil de música brasileira e muita troca de ideia com a galera, junto com outras lojas de disco.
 
 Valeu à @garimpavinilfeiradediscos por organizar a feira e receber a gente. Foi bom demais!
 

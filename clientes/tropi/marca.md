@@ -9,6 +9,7 @@ Legenda: o que o cliente disse vai sem marca; inferência de Claude vai marcada 
 - O que vende: vinil de música brasileira de todas as épocas, novos e garimpados; ocasionalmente música latino-americana (skill tropi-discos). Marcas internas: Seleção Tropi (curadoria destaque) e Garimpo (usados e achados). Parceria com o selo NRC (Noize Record Club).
 - O que o Instagram precisa fazer pela marca agora: vender mais pelo site e pelo link da loja no próprio Instagram.
 - Operação: 100% online, sem loja física; o dono produz tudo sozinho: conteúdo, vendas e curadoria (skill tropi-discos).
+- Feiras: a Tropi participa como expositora de feiras de disco em São Paulo (ex.: @garimpavinilfeiradediscos), vendendo e conversando com o público ao lado de outras lojas. Não vai às feiras para garimpar (Lucas, 2026-09-28).
 - Tagline no ar: "uma loja de discos feita por quem é apaixonado por música e pelo som do vinil" (site).
 
 ## 2. Público
