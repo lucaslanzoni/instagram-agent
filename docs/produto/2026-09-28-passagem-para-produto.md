@@ -23,6 +23,7 @@ como criador de conteúdo. A Tropi continua usando o sistema normalmente.
 | Harness | Vale para o produto **e também para a Tropi** (atualizar o repositório atual com a mesma esteira) | 2026-09-28 |
 | Fotos do cliente | Entram já na fase inicial, com **botão de envio de imagens no briefing** (formulário), para uso nos posts | 2026-09-28 |
 | Fotos de banco | Só bancos gratuitos com licença comercial e sem risco de LGPD | 2026-09-28 |
+| Automação | **Primeiro momento: operado no Mac, em sessões.** Lucas gera pauta e textos, roda a esteira de checagem, publica no app do cliente e puxa fotos e aprovações. Autoatendimento do cliente (gerar posts no tempo dele) fica para um segundo momento | 2026-09-28 |
 
 ## Recomendação de Claude para a fase 0 (a detalhar no desenho)
 
@@ -41,6 +42,16 @@ como criador de conteúdo. A Tropi continua usando o sistema normalmente.
 - **Esteira única de publicação (harness):** `publicar <cliente> <mês>` roda todos os portões (legenda, humanizador,
   tamanhos, versão, checklist visual, isolamento por cliente) e grava um relatório; avaliação por cliente
   (aprovação sem edição, rodadas, horas de operação).
+- **O Mac só precisa estar ligado nas sessões de produção.** O app do cliente (briefing, envio de fotos e vídeos,
+  aprovação, edição de legenda, download) fica na nuvem, 24 horas por dia, sem depender do Mac. Cuidados:
+  - Supabase gratuito pausa o projeto após 7 dias sem acesso e só volta reativado no painel; pesar isso contra o
+    Cloudflare, que não pausa.
+  - Os originais ficam na pasta de clientes do Mac depois que saem da nuvem: a pasta precisa de backup (iCloud ou Drive).
+  - Aviso para Lucas quando o cliente enviar foto ou aprovar pode sair da própria nuvem, sem o Mac.
+- **Segundo momento (autoatendimento, não entra na fase 0):** texto pelo Claude via API com chave comercial (único
+  custo variável, por cliente; não usar a assinatura pessoal de Lucas para servir clientes automaticamente), artes
+  geradas no navegador do celular a partir dos modelos HTML, checagens do harness antes de o post aparecer, cliente
+  escolhendo só entre modelos visuais já aprovados. Reels e configuração de marca seguem operados.
 - **Visual por kit de marca:** modelos genéricos alimentados por cores, fontes, logo e elementos do cliente; tema neutro
   para quem não tem identidade.
 
