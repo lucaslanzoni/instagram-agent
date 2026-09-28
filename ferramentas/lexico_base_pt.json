@@ -1,6 +1,6 @@
 {
-  "versao": "1.0",
-  "nota": "Léxico inicial em PT-BR. Invisíveis e tipográficos são corrigidos sozinhos; palavras e frases são trocadas por equivalentes simples; estruturas só são sinalizadas para reescrita. A tradução completa do léxico de Jake é a Fase 2.",
+  "versao": "1.1",
+  "nota": "Léxico inicial em PT-BR. Invisíveis e tipográficos são corrigidos sozinhos; palavras e frases são trocadas por equivalentes simples; estruturas só são sinalizadas para reescrita. A tradução completa do léxico de Jake é a Fase 2. v1.1: marcas de e-mail e LinkedIn de venda (aberturas e fechos de fórmula, jargão B2B, assunto que simula resposta), que dependem da voz de quem assina e por isso só são sinalizadas.",
   "invisiveis": [
     {"cp": "U+200B", "nome": "ESPAÇO DE LARGURA ZERO", "acao": "apagar"},
     {"cp": "U+200C", "nome": "NÃO-JUNTOR DE LARGURA ZERO", "acao": "apagar"},
@@ -37,12 +37,17 @@
     {"buscar": "é importante lembrar que", "trocar": "", "familia": "muletas"},
     {"buscar": "sem sombra de dúvidas", "trocar": "", "familia": "muletas"},
     {"buscar": "não é exagero dizer que", "trocar": "", "familia": "muletas"},
+    {"buscar": "vale lembrar que", "trocar": "", "familia": "muletas"},
+    {"buscar": "em última análise", "trocar": "", "familia": "muletas"},
+    {"buscar": "com o intuito de", "trocar": "para", "familia": "muletas"},
+    {"buscar": "no intuito de", "trocar": "para", "familia": "muletas"},
     {"buscar": "mergulhar de cabeça", "trocar": "entrar", "familia": "verbos"}
   ],
   "palavras": [
     {"buscar": "alavancar", "trocar": "aumentar", "familia": "verbos"},
     {"buscar": "potencializar", "trocar": "aumentar", "familia": "verbos"},
     {"buscar": "desvendar", "trocar": "entender", "familia": "verbos"},
+    {"buscar": "otimizar", "trocar": "melhorar", "familia": "verbos"},
     {"buscar": "robusto", "trocar": "sólido", "familia": "adjetivos"},
     {"buscar": "crucial", "trocar": "importante", "familia": "adjetivos"},
     {"buscar": "imprescindível", "trocar": "necessário", "familia": "adjetivos"}
@@ -53,6 +58,12 @@
     {"id": "nao-e-sobre", "regex": "(?i)\\bnão é sobre [^.!?\\n]{2,60}[,;.] é sobre\\b", "nome": "\"Não é sobre X, é sobre Y\"", "correcao": "Afirmar direto o que é."},
     {"id": "exclamacoes", "regex": "!{2,}", "nome": "Exclamações em sequência", "correcao": "No máximo uma, e só se a marca usa."},
     {"id": "revelacao", "regex": "(?im)^(?:o resultado|a verdade|o segredo|a resposta)\\?\\s*$", "nome": "Pergunta de revelação (\"O resultado?\")", "correcao": "Dizer o resultado sem suspense fabricado."},
-    {"id": "superlativos", "regex": "(?i)\\b(?:incrível|imperdível|sensacional|surpreendente|arrasador)\\b", "nome": "Superlativo vazio", "correcao": "Trocar por um fato: número, nome, detalhe."}
+    {"id": "superlativos", "regex": "(?i)\\b(?:incrível|imperdível|sensacional|surpreendente|arrasador)\\b", "nome": "Superlativo vazio", "correcao": "Trocar por um fato: número, nome, detalhe."},
+    {"id": "abertura-formula", "regex": "(?i)\\bespero que (?:(?:esta|essa) (?:mensagem|e-?mail) (?:o |a |te |lhe )?encontre|(?:você |vc )?(?:esteja|estejam)) bem\\b", "nome": "Abertura de fórmula (\"Espero que esteja bem\")", "correcao": "Abrir com o motivo do contato ou com o cumprimento da voz de quem assina."},
+    {"id": "fecho-disposicao", "regex": "(?i)\\b(?:fico|fica|ficamos|permaneço|permanecemos|estou|estamos|sigo|seguimos) (?:à|a) (?:sua |inteira )?disposição\\b", "nome": "Fecho de fórmula (\"Fico à disposição\")", "correcao": "Fechar com um próximo passo concreto (dia, horário, pergunta) ou sem fórmula."},
+    {"id": "gostaria-de", "regex": "(?i)\\bgostaria de (?:apresentar|compartilhar|convidar|aproveitar)\\b", "nome": "Pedido cerimonioso (\"Gostaria de apresentar\")", "correcao": "Dizer direto o que é e por que é com aquela pessoa."},
+    {"id": "jargao-b2b", "regex": "(?i)\\b(?:agregar valor|agrega valor|parceria estratégica|sinergia|ganha-ganha|solução completa|soluções inovadoras|potencial máximo|próximo nível)\\b", "nome": "Jargão de venda B2B", "correcao": "Trocar por um fato do caso: número, nome, uso concreto."},
+    {"id": "vai-alem", "regex": "(?i)\\bvai (?:muito )?além d[aeo]s?\\b", "nome": "\"Vai além de\"", "correcao": "Dizer o que é, sem comparar com o que não é."},
+    {"id": "assunto-falso", "regex": "(?im)^\\s*assunto:\\s*(?:re|fwd|enc|res)\\s*:", "nome": "Assunto que simula resposta ou encaminhamento", "correcao": "Assunto com o motivo real do e-mail, sem fingir conversa anterior."}
   ]
 }

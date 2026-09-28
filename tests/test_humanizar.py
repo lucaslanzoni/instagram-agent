@@ -66,3 +66,29 @@ def test_proibidas_sao_sinalizadas_e_nao_trocadas():
 def test_proibida_nao_casa_dentro_de_outra_palavra():
     _, rel = humanizar("O aproveitamento foi bom.", LEX, ["aproveita"])
     assert rel["proibidas"] == []
+
+
+def test_apaga_muleta_de_email():
+    limpo, _ = humanizar("Vale lembrar que o livro sai em outubro.", LEX)
+    assert limpo.strip() == "O livro sai em outubro."
+
+
+def test_sinaliza_abertura_e_fecho_de_formula():
+    texto = "Olá, Ana. Espero que esta mensagem a encontre bem.\nFico à disposição."
+    limpo, rel = humanizar(texto, LEX)
+    ids = [e["id"] for e in rel["estruturas"]]
+    assert "abertura-formula" in ids
+    assert "fecho-disposicao" in ids
+    assert limpo.strip() == texto
+
+
+def test_sinaliza_jargao_b2b_e_assunto_falso():
+    _, rel = humanizar("Assunto: Re: parceria\n\nQueremos agregar valor.", LEX)
+    ids = [e["id"] for e in rel["estruturas"]]
+    assert "jargao-b2b" in ids
+    assert "assunto-falso" in ids
+
+
+def test_bem_vindo_nao_e_abertura_de_formula():
+    _, rel = humanizar("Espero que o livro chegue bem embalado.", LEX)
+    assert "abertura-formula" not in [e["id"] for e in rel["estruturas"]]
