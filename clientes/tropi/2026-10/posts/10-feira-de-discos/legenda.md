@@ -1,9 +1,7 @@
-Tem Tropi expondo nas feiras de disco de São Paulo.
+A Tropi tá por aí nas feiras de disco de São Paulo!
 
-Banca montada, vinil de música brasileira e muita troca de ideia com a galera, junto com outras lojas de disco.
+A gente ama esses encontros: trocar ideia com quem tá comprando, com os outros expositores e, claro, ver vocês de perto.
 
-Valeu à @garimpavinilfeiradediscos por organizar a feira e receber a gente. Foi bom demais!
-
-Segue a @tropi_discos pra saber das próximas.
+Quer saber das próximas feiras? Segue a @garimpavinilfeiradediscos. E segue a @tropi_discos pra saber onde a gente vai estar no próximo encontro.
 
 #feiradediscos #vinil #tropidiscos #saopaulo

@@ -35,6 +35,7 @@ A voz é constante; o tom muda.
 | Carrossel | Contador de história | Um fato por slide; contexto de época e produção; fecho que dá vontade de ouvir o disco |
 | Post estático | Uma frase concreta | Título curto com nome de disco, artista ou fato; nada de frase de efeito vaga |
 | Legenda | Conversa de balcão | Abre com fato ou curiosidade, desenvolve com substância, fecha com convite leve (link na bio, pergunta) |
+| Evento e bastidor | Bem falado, de conversa | "A Tropi tá por aí", "a gente ama esses encontros"; gente em primeiro plano; aprovado por Lucas em 2026-09-28 |
 | Chegou na loja | Convite animado | "Dá uma olhada no disco que acabou de chegar por aqui"; edição e kit descritos; sem preço |
 
 ## 4. O que a marca fala
