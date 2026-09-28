@@ -17,7 +17,6 @@ como criador de conteúdo. A Tropi continua usando o sistema normalmente.
 | Quem opera a criação | **Serviço operado**: a consultoria opera o agente; o cliente usa o celular para briefing, envio de fotos e vídeos, aprovação, edição de legenda e download | 2026-09-28 |
 | Acesso ao Instagram | Nenhum. Nada se conecta à conta do cliente; quem publica é o humano. Exceção só para plataforma verificada, paga e com análise de segurança | 2026-09-23 |
 | Fase de teste | Repositório público + GitHub Pages + portão de e-mail cosmético foram aceitos **só para o teste** | 2026-09-23 |
-
 | Onde o produto mora | Repositório novo e privado com o nome do produto (nome a definir), só com o motor; dados de cada cliente fora do git, numa pasta por cliente em `~/Documents/Freelas/<produto>/clientes/<slug>/`. A Tropi fica no repositório atual | 2026-09-28 |
 | Escala | 2 clientes externos, depois 5, depois 10, depois mais | 2026-09-28 |
 | Custo | **Infra gratuita** na fase inicial; pagar só quando a receita dos clientes cobrir | 2026-09-28 |
@@ -98,8 +97,7 @@ Medição completa em `clientes/tropi/2026-10/retorno.md`.
    HTML à mão, e o que fazer quando o cliente não tem identidade.
 7. **Harness formal.** Juntar as checagens que existem (legenda, humanizador, versão, conferência visual
    manual) numa esteira única com portões, registro de cada execução e avaliação por cliente.
-8. **Onde o produto mora.** Repositório novo, casa canônica (`~/Code/freelas/<nome>`), repositório privado.
-   A Tropi migra para ele ou fica como está?
+8. **Nome do produto.** Define o repositório e as pastas (casa já decidida: repositório novo e privado; Tropi fica onde está).
 9. **Oferta comercial.** Preço, escopo mensal (quantos posts, Reels ou não), quem opera além de Lucas.
 
 ## Regras que continuam valendo
