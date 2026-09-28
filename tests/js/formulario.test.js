@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import { SECOES, ARQUETIPOS } from '../../site/assets/perguntas.js';
 import { totalPerguntas, contarRespondidas, alternarArquetipo, montarRespostas, validarSecoes } from '../../site/assets/formulario-logica.js';
 
-test('o formulário tem 3 seções e 17 perguntas válidas', () => {
+test('o formulário tem 3 seções, 17 perguntas obrigatórias e 2 opcionais válidas', () => {
   assert.equal(SECOES.length, 3);
   assert.equal(totalPerguntas(SECOES), 17);
+  const opcionais = SECOES.flatMap((s) => s.perguntas).filter((p) => p.opcional).map((p) => p.id);
+  assert.deepEqual(opcionais, ['marca_linhas', 'marca_condicoes']);
   assert.deepEqual(validarSecoes(SECOES, ARQUETIPOS), []);
 });
 
@@ -19,6 +21,13 @@ test('validarSecoes acha id repetido e arquétipo ausente', () => {
 test('contarRespondidas ignora espaços e lista vazia', () => {
   const respostas = { marca_frase: '  ', marca_links: 'site', voz_arquetipo: [] };
   assert.equal(contarRespondidas(SECOES, respostas), 1);
+});
+
+test('pergunta opcional não conta no progresso, mas vai nas respostas', () => {
+  const respostas = { marca_frase: 'Loja', marca_condicoes: 'frete grátis acima de R$300' };
+  assert.equal(contarRespondidas(SECOES, respostas), 1);
+  const dados = montarRespostas({ cliente: 'x', email: 'a@b.co', respostas, agora: new Date('2026-10-01T12:00:00Z') });
+  assert.equal(dados.respostas.marca_condicoes, 'frete grátis acima de R$300');
 });
 
 test('alternarArquetipo aceita no máximo 2 e desmarca', () => {

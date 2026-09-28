@@ -39,7 +39,9 @@ function iniciar({ email, cliente }) {
       }, 400);
     });
     campos.set(p.id, area);
-    caixa.append(el('p', p.texto, 'texto'), el('p', p.exemplo, 'exemplo'), area);
+    const texto = el('p', p.texto, 'texto');
+    if (p.opcional) texto.append(' ', el('span', '(opcional)', 'opcional'));
+    caixa.append(texto, el('p', p.exemplo, 'exemplo'), area);
     return caixa;
   }
 

@@ -28,7 +28,7 @@ Entrada: `clientes/<slug>/respostas.json` (exportado pelo formulário do site) e
    | marca_frase, marca_objetivo | 1. Identidade |
    | marca_links | cabeçalho (fonte) |
    | empatia_* | 2. Público |
-   | site + pasta_marca | 3. Produto e oferta |
+   | marca_linhas, marca_condicoes (opcionais) + site + pasta_marca | 3. Produto e oferta |
    | posic_diferencial, voz_defende | 4. Posicionamento |
    | posic_concorrentes | 5. Concorrentes |
    | todas | 6. Temas de conteúdo (3 a 5 pilares) |

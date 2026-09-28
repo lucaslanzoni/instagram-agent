@@ -1,5 +1,6 @@
+// Perguntas com `opcional: true` aparecem no formulário, mas não entram na contagem de progresso
 export function totalPerguntas(secoes) {
-  return secoes.reduce((n, s) => n + s.perguntas.length, 0);
+  return secoes.reduce((n, s) => n + s.perguntas.filter((p) => !p.opcional).length, 0);
 }
 
 function preenchida(valor) {
@@ -9,7 +10,7 @@ function preenchida(valor) {
 
 export function contarRespondidas(secoes, respostas) {
   let n = 0;
-  for (const secao of secoes) for (const p of secao.perguntas) if (preenchida(respostas?.[p.id])) n++;
+  for (const secao of secoes) for (const p of secao.perguntas) if (!p.opcional && preenchida(respostas?.[p.id])) n++;
   return n;
 }
 

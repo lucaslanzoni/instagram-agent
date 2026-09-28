@@ -24,6 +24,8 @@ export const SECOES = [
       { id: 'marca_frase', texto: 'O que é a marca e o que ela vende, em uma frase?', exemplo: 'Ex: uma loja online de discos de vinil de música brasileira, novos e usados.' },
       { id: 'marca_links', texto: 'Qual é o site e o @ do Instagram?', exemplo: 'Ex: minhaloja.com.br e @minhaloja' },
       { id: 'marca_objetivo', texto: 'O que o Instagram precisa fazer pela marca nos próximos meses?', exemplo: 'Ex: vender mais pelo site, ser lembrada como referência, formar uma comunidade.' },
+      { id: 'marca_linhas', opcional: true, texto: 'A marca tem linhas, coleções ou parcerias com nome próprio?', exemplo: 'Ex: uma coleção de curadoria, uma linha de usados, uma parceria com um selo ou fornecedor.' },
+      { id: 'marca_condicoes', opcional: true, texto: 'Quais condições de compra valem sempre?', exemplo: 'Ex: desconto a partir de 2 itens, frete grátis acima de um valor, brinde em todo pedido.' },
     ],
   },
   {
