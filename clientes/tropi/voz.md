@@ -36,6 +36,7 @@ A voz é constante; o tom muda.
 | Post estático | Uma frase concreta | Título curto com nome de disco, artista ou fato; nada de frase de efeito vaga |
 | Legenda | Conversa de balcão | Abre com fato ou curiosidade, desenvolve com substância, fecha com convite leve (link na bio, pergunta) |
 | Evento e bastidor | Bem falado, de conversa | "A Tropi tá por aí", "a gente ama esses encontros"; gente em primeiro plano; aprovado por Lucas em 2026-09-28 |
+| Homenagem a artista | Conversa de fã | O que o artista representou e fez, contado sem tom de aula; fases e discos como assunto de papo; celebração (Lucas, 2026-09-28) |
 | Chegou na loja | Convite animado | "Dá uma olhada no disco que acabou de chegar por aqui"; edição e kit descritos; sem preço |
 
 ## 4. O que a marca fala
@@ -55,6 +56,7 @@ A voz é constante; o tom muda.
 - Pose de especialista ou de colecionador elitista.
 - Abraçar o mainstream internacional.
 - Anglicismo quando existe palavra em português.
+- Falar em primeira pessoa do dono ("eu", "pra mim, Lucas"). A voz é da Tropi, no "a gente" (Lucas, 2026-09-28).
 
 ## 6. Checklist antes de publicar
 
