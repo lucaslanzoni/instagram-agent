@@ -10,3 +10,5 @@ clientes/**/posts/**/*.jpg
 clientes/**/posts/**/*.png
 clientes/**/rascunho.txt
 clientes/**/texto.md
+clientes/**/posts/**/*.mov
+clientes/**/posts/**/*.mp4

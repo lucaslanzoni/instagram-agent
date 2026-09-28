@@ -39,3 +39,41 @@ def test_modelo_desconhecido_e_recusado(tmp_path):
     preparar(tmp_path, "disco", {"rotulo": "x", "titulo": "y"})
     with pytest.raises(ValueError, match="modelo desconhecido"):
         modelos_foto.gerar(tmp_path)
+
+
+def preparar_reels(tmp_path, modelo="adesivos", capa=True):
+    (tmp_path / "original.mov").write_bytes(b"mov")
+    (tmp_path / "capa-foto.jpg").write_bytes(b"jpg")
+    spec = {"modelo": modelo, "video": "original.mov", "textos": {"etiqueta": "Parabéns, Tim!", "pilula": "84 anos"}}
+    if capa:
+        spec["capa"] = {"modelo": "encarte", "foto": "capa-foto.jpg",
+                        "textos": {"rotulo": "Reels", "titulo": "Tim Maia", "apoio": "Aperta o play"}}
+    (tmp_path / "post-foto.json").write_text(json.dumps(spec), encoding="utf-8")
+
+
+def test_reels_gera_moldura_transparente_e_capa_vertical(tmp_path):
+    preparar_reels(tmp_path)
+    saidas = modelos_foto.gerar(tmp_path)
+    assert [s.name for s in saidas] == ["moldura.html", "slide-1.html"]
+    moldura = (tmp_path / "moldura.html").read_text(encoding="utf-8")
+    assert "background:transparent" in moldura and 'class="foto"' not in moldura
+    assert "Parabéns, Tim!" in moldura
+    assert "height:1920px" in (tmp_path / "slide-1.html").read_text(encoding="utf-8")
+
+
+def test_reels_sem_capa_ou_com_modelo_que_cobre_o_video_e_recusado(tmp_path):
+    preparar_reels(tmp_path, capa=False)
+    with pytest.raises(ValueError, match="capa"):
+        modelos_foto.gerar(tmp_path)
+    preparar_reels(tmp_path, modelo="encarte")
+    with pytest.raises(ValueError, match="adesivos"):
+        modelos_foto.gerar(tmp_path)
+
+
+def test_adesivos_leva_o_sol_para_baixo_quando_pedido(tmp_path):
+    (tmp_path / "foto.jpg").write_bytes(b"jpg")
+    (tmp_path / "post-foto.json").write_text(json.dumps({"modelo": "adesivos", "foto": "foto.jpg", "elemento": "embaixo",
+        "textos": {"etiqueta": "Oi", "pilula": "Tropi"}}), encoding="utf-8")
+    modelos_foto.gerar(tmp_path)
+    html = (tmp_path / "slide-1.html").read_text(encoding="utf-8")
+    assert "right:40px;bottom:50px" in html

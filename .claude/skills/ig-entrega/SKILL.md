@@ -19,7 +19,7 @@ description: Publica o mês de um cliente na página de aprovação (manifesto, 
    e-mail do cliente e abrir o mês. Conferir:
    - lateral com nome, mês, @ e contagem de publicações;
    - grade com todos os posts;
-   - carrossel passa entre os slides;
+   - carrossel passa entre os slides; Reels toca o vídeo com a capa;
    - status e comentário persistem ao recarregar a página;
    - legenda editável;
    - baixar um post e baixar o mês;

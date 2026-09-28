@@ -62,7 +62,7 @@ def test_carrossel_com_uma_imagem_e_recusado(tmp_path):
 def test_formato_invalido_e_recusado(tmp_path):
     mes = tmp_path / "2026-10"
     criar_post(mes, "01-reel", 1, formato="reel")
-    with pytest.raises(ValueError, match="formato deve ser carrossel ou estatico"):
+    with pytest.raises(ValueError, match="formato deve ser carrossel, estatico ou reels"):
         montar_manifesto(mes, CLIENTE)
 
 
@@ -139,3 +139,44 @@ def test_publicar_copia_imagens_e_atualiza_indice(tmp_path):
         (site / "clientes" / "demo" / "indice.json").read_text(encoding="utf-8")
     )
     assert indice["meses"] == ["2026-09", "2026-10"]
+
+
+def test_reels_tem_capa_e_video_e_versao_muda_com_video(tmp_path):
+    mes = tmp_path / "2026-10"
+    pasta = criar_post(mes, "12-reels", 1, formato="reels", n_imagens=1)
+    (pasta / "video.mp4").write_bytes(b"mp4-a")
+    post = montar_manifesto(mes, CLIENTE)["posts"][0]
+    assert post["imagens"] == ["12-reels/1.jpg"]
+    assert post["video"] == "12-reels/video.mp4"
+    antes = post["versao"]
+    (pasta / "video.mp4").write_bytes(b"mp4-b")
+    assert montar_manifesto(mes, CLIENTE)["posts"][0]["versao"] != antes
+
+
+def test_reels_sem_video_e_recusado(tmp_path):
+    mes = tmp_path / "2026-10"
+    criar_post(mes, "12-reels", 1, formato="reels", n_imagens=1)
+    with pytest.raises(ValueError, match="video.mp4"):
+        montar_manifesto(mes, CLIENTE)
+
+
+def test_video_fora_de_reels_e_recusado(tmp_path):
+    mes = tmp_path / "2026-10"
+    pasta = criar_post(mes, "01-estatico", 1, formato="estatico", n_imagens=1)
+    (pasta / "video.mp4").write_bytes(b"mp4")
+    with pytest.raises(ValueError, match="reels"):
+        montar_manifesto(mes, CLIENTE)
+
+
+def test_post_sem_video_tem_video_nulo(tmp_path):
+    mes = tmp_path / "2026-10"
+    criar_post(mes, "01-estatico", 1, formato="estatico", n_imagens=1)
+    assert montar_manifesto(mes, CLIENTE)["posts"][0]["video"] is None
+
+
+def test_publicar_copia_video(tmp_path):
+    mes = tmp_path / "2026-10"
+    pasta = criar_post(mes, "12-reels", 1, formato="reels", n_imagens=1)
+    (pasta / "video.mp4").write_bytes(b"mp4")
+    publicar(mes, tmp_path / "site", CLIENTE)
+    assert (tmp_path / "site/clientes/demo/2026-10/12-reels/video.mp4").read_bytes() == b"mp4"

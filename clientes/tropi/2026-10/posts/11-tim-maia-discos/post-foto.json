@@ -1,0 +1,11 @@
+{
+ "modelo": "adesivos",
+ "foto": "foto.jpg",
+ "posicao": "50% 50%",
+ "fonte": "enviada por Lucas",
+ "textos": {
+  "etiqueta": "Parabéns, Tim!",
+  "pilula": "84 anos de Tim Maia"
+ },
+ "elemento": "embaixo"
+}

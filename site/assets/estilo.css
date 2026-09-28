@@ -82,6 +82,7 @@ dialog.janela::backdrop { background: rgba(0, 0, 0, .8); }
 .carrossel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .carrossel::-webkit-scrollbar { display: none; }
 .carrossel img { flex: 0 0 100%; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; scroll-snap-align: start; display: block; }
+.carrossel video { flex: 0 0 100%; width: 100%; aspect-ratio: 9 / 16; max-height: 70vh; background: #000; display: block; }
 .seta { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(10, 10, 10, .7); color: var(--fg); border: 0; width: 40px; height: 40px; border-radius: 50%; }
 .seta.anterior { left: 8px; }
 .seta.proxima { right: 8px; }

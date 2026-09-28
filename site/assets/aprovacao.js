@@ -6,7 +6,7 @@ import {
 import { baixarBlob, baixarJSON, podeCompartilhar, compartilharArquivos } from './baixar.js';
 
 const $ = (id) => document.getElementById(id);
-const ROTULO_FORMATO = { carrossel: 'Carrossel', estatico: 'Post estático' };
+const ROTULO_FORMATO = { carrossel: 'Carrossel', estatico: 'Post estático', reels: 'Reels' };
 const NOMES_MES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 function formatarMes(mes) {
@@ -150,15 +150,27 @@ async function iniciar({ email, cliente }) {
   function abrir(i) {
     aberto = posts[i];
     const c = $('carrossel');
-    c.replaceChildren(...aberto.imagens.map((src, n) => {
-      const img = document.createElement('img');
-      img.src = comVersao(base + src, aberto);
-      img.alt = n === 0 ? aberto.alt || '' : `Slide ${n + 1}`;
-      return img;
-    }));
+    if (aberto.video) {
+      // Reels: o vídeo com a capa como pôster; a capa sozinha fica no download
+      const video = document.createElement('video');
+      video.src = comVersao(base + aberto.video, aberto);
+      video.poster = comVersao(base + aberto.imagens[0], aberto);
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.setAttribute('aria-label', aberto.alt || 'Vídeo do Reels');
+      c.replaceChildren(video);
+    } else {
+      c.replaceChildren(...aberto.imagens.map((src, n) => {
+        const img = document.createElement('img');
+        img.src = comVersao(base + src, aberto);
+        img.alt = n === 0 ? aberto.alt || '' : `Slide ${n + 1}`;
+        return img;
+      }));
+    }
     c.scrollLeft = 0;
     $('pontos').replaceChildren(...aberto.imagens.map(() => el('span')));
-    const varios = aberto.imagens.length > 1;
+    const varios = !aberto.video && aberto.imagens.length > 1;
     $('anterior').hidden = !varios;
     $('proxima').hidden = !varios;
     $('pontos').hidden = !varios;
@@ -167,6 +179,7 @@ async function iniciar({ email, cliente }) {
     $('legenda').value = legendaFinal(aberto, estado);
     $('comentario').value = estado[aberto.id]?.comentario || '';
     $('copiado').hidden = true;
+    if (celularCompartilha) $('baixar-post').textContent = aberto.video ? 'Salvar vídeo e capa' : 'Salvar imagens';
     prepararArquivos(aberto);
     desenharStatus();
     desenharPontos();
@@ -181,7 +194,10 @@ async function iniciar({ email, cliente }) {
     if (e.key === 'ArrowLeft') $('anterior').click();
     if (e.key === 'ArrowRight') $('proxima').click();
   });
-  $('janela').addEventListener('close', () => { aberto = null; });
+  $('janela').addEventListener('close', () => {
+    $('carrossel').querySelector('video')?.pause();
+    aberto = null;
+  });
   $('fechar').addEventListener('click', () => $('janela').close());
 
   for (const botao of $('status-botoes').children) {
@@ -212,10 +228,10 @@ async function iniciar({ email, cliente }) {
       const zip = new window.JSZip();
       for (const post of lista) {
         const arquivos = arquivosDoPost(post, estado);
-        for (const img of arquivos.imagens) {
-          const r = await fetch(comVersao(base + img.src, post));
-          if (!r.ok) throw new Error(`${r.status} em ${img.src}`);
-          zip.file(img.nome, await r.blob());
+        for (const arq of [...arquivos.imagens, ...(arquivos.video ? [arquivos.video] : [])]) {
+          const r = await fetch(comVersao(base + arq.src, post));
+          if (!r.ok) throw new Error(`${r.status} em ${arq.src}`);
+          zip.file(arq.nome, await r.blob());
         }
         zip.file(arquivos.legenda.nome, arquivos.legenda.texto);
       }
@@ -240,6 +256,11 @@ async function iniciar({ email, cliente }) {
         if (!r.ok) throw new Error(`${r.status} em ${src}`);
         arquivos.push(new File([await r.blob()], `${cliente}-${post.id}-${n + 1}.jpg`, { type: 'image/jpeg' }));
       }
+      if (post.video) {
+        const r = await fetch(comVersao(base + post.video, post));
+        if (!r.ok) throw new Error(`${r.status} em ${post.video}`);
+        arquivos.push(new File([await r.blob()], `${cliente}-${post.id}.mp4`, { type: 'video/mp4' }));
+      }
       if (aberto === post) arquivosDoAberto = arquivos;
     } catch (erro) {
       console.error(erro);
@@ -249,13 +270,13 @@ async function iniciar({ email, cliente }) {
   $('baixar-post').addEventListener('click', () => {
     if (celularCompartilha) {
       if (!arquivosDoAberto) {
-        $('copiado').textContent = 'Preparando as imagens. Toque de novo em um instante.';
+        $('copiado').textContent = 'Preparando os arquivos. Toque de novo em um instante.';
         $('copiado').hidden = false;
         return;
       }
       if (podeCompartilhar(arquivosDoAberto)) {
         compartilharArquivos(arquivosDoAberto, `Post ${String(aberto.numero).padStart(2, '0')}`)
-          .catch((erro) => mostrarMensagem('Não foi possível abrir o menu para salvar as imagens. Tente de novo.', erro));
+          .catch((erro) => mostrarMensagem('Não foi possível abrir o menu para salvar os arquivos. Tente de novo.', erro));
         return;
       }
     }

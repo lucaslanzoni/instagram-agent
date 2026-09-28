@@ -1,5 +1,5 @@
 export const STATUS = ['aprovado', 'revisar', 'descartado'];
-const FORMATOS = ['carrossel', 'estatico'];
+const FORMATOS = ['carrossel', 'estatico', 'reels'];
 
 export function validarManifesto(m) {
   if (!m || typeof m !== 'object') return ['manifesto ausente'];
@@ -16,6 +16,7 @@ export function validarManifesto(m) {
     ids.add(p.id);
     if (!FORMATOS.includes(p.formato)) erros.push(`${p.id}: formato inválido`);
     if (!Array.isArray(p.imagens) || p.imagens.length === 0) erros.push(`${p.id}: sem imagens`);
+    if (p.formato === 'reels' && !p.video) erros.push(`${p.id}: reels sem vídeo`);
   });
   return erros;
 }
@@ -104,6 +105,7 @@ export function montarAprovacao({ cliente, mes, email, estado, posts, agora }) {
 export function arquivosDoPost(post, estado) {
   return {
     imagens: post.imagens.map((src) => ({ src, nome: src })),
+    video: post.video ? { src: post.video, nome: post.video } : null,
     legenda: { nome: `${post.id}/legenda.txt`, texto: legendaFinal(post, estado) },
   };
 }

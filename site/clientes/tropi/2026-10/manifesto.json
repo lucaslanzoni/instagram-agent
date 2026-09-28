@@ -21,6 +21,7 @@
         "01-guia-de-setup/6.jpg",
         "01-guia-de-setup/7.jpg"
       ],
+      "video": null,
       "versao": "f8a1d894a6f1"
     },
     {
@@ -34,6 +35,7 @@
       "imagens": [
         "02-a-tropi-esta-mudando/1.jpg"
       ],
+      "video": null,
       "versao": "873f95e8bcc1"
     },
     {
@@ -54,6 +56,7 @@
         "03-cuidado-com-os-discos/7.jpg",
         "03-cuidado-com-os-discos/8.jpg"
       ],
+      "video": null,
       "versao": "942e8425ee2e"
     },
     {
@@ -67,6 +70,7 @@
       "imagens": [
         "04-lembrete-do-site/1.jpg"
       ],
+      "video": null,
       "versao": "2ee7d1793e0d"
     },
     {
@@ -85,6 +89,7 @@
         "05-nova-cara-da-tropi/5.jpg",
         "05-nova-cara-da-tropi/6.jpg"
       ],
+      "video": null,
       "versao": "1bb042a9dd64"
     },
     {
@@ -98,6 +103,7 @@
       "imagens": [
         "06-dica-rapida-borda/1.jpg"
       ],
+      "video": null,
       "versao": "ea61e3b685be"
     },
     {
@@ -111,6 +117,7 @@
       "imagens": [
         "07-musica-brasileira/1.jpg"
       ],
+      "video": null,
       "versao": "bfbbcfc2d723"
     },
     {
@@ -128,6 +135,7 @@
         "08-chegou-na-loja/4.jpg",
         "08-chegou-na-loja/5.jpg"
       ],
+      "video": null,
       "versao": "8c0e0b4de800"
     },
     {
@@ -141,6 +149,7 @@
       "imagens": [
         "09-data-importante/1.jpg"
       ],
+      "video": null,
       "versao": "7ab94d921c7a"
     },
     {
@@ -154,7 +163,36 @@
       "imagens": [
         "10-feira-de-discos/1.jpg"
       ],
+      "video": null,
       "versao": "ecc746a6e84f"
+    },
+    {
+      "id": "11-tim-maia-discos",
+      "numero": 11,
+      "tema": "Aniversário do Tim Maia",
+      "formato": "estatico",
+      "data_sugerida": "2026-09-28",
+      "alt": "Discos de vinil do Tim Maia espalhados sobre um piso de taco, entre eles Racional Vol. 2, Disco Club, O Descobridor dos Sete Mares e Somos América.",
+      "legenda": "Hoje o Tim Maia faria 84 anos. Parabéns, síndico!\n\nJuntamos aqui os discos do Tim que moram com a gente: tem Racional Vol. 2, Disco Club, O Descobridor dos Sete Mares, Somos América e mais uma pilha de soul brasileiro do melhor.\n\nQual é o seu disco preferido do Tim? Conta aqui nos comentários.\n\n#timmaia #soulbrasileiro #vinil #tropidiscos",
+      "imagens": [
+        "11-tim-maia-discos/1.jpg"
+      ],
+      "video": null,
+      "versao": "11dd263b6bb6"
+    },
+    {
+      "id": "12-tim-maia-video",
+      "numero": 12,
+      "tema": "Aniversário do Tim Maia (vídeo)",
+      "formato": "reels",
+      "data_sugerida": "2026-09-28",
+      "alt": "Vídeo em que Lucas, da Tropi Discos, mostra um por um os discos de vinil do Tim Maia, espalhados no chão da sala.",
+      "legenda": "Aniversário do Tim Maia pede disco na mão e som alto.\n\nTiramos da estante, um por um, os discos do Tim que moram aqui. Do Racional ao Disco Club, é soul brasileiro de ponta a ponta.\n\nAumenta o volume e comenta qual você colocaria pra tocar primeiro.\n\n#timmaia #soulbrasileiro #vinil #tropidiscos",
+      "imagens": [
+        "12-tim-maia-video/1.jpg"
+      ],
+      "video": "12-tim-maia-video/video.mp4",
+      "versao": "f505331f402c"
     }
   ]
 }

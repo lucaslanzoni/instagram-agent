@@ -14,7 +14,9 @@ import sys
 import unicodedata
 from pathlib import Path
 
-FORMATOS = {"carrossel": (2, 10), "estatico": (1, 1)}
+# reels: uma imagem (a capa) e o vídeo em video.mp4
+FORMATOS = {"carrossel": (2, 10), "estatico": (1, 1), "reels": (1, 1)}
+VIDEO = "video.mp4"
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATA_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MES_RE = re.compile(r"^\d{4}-\d{2}$")
@@ -26,10 +28,14 @@ def _imagens(pasta):
     return [f"{pasta.name}/{n}.jpg" for n in numeros]
 
 
-def _versao(legenda, pasta, imagens):
+def _video(pasta):
+    return f"{pasta.name}/{VIDEO}" if (pasta / VIDEO).exists() else None
+
+
+def _versao(legenda, pasta, imagens, video=None):
     h = hashlib.sha256()
     h.update(legenda.encode("utf-8"))
-    for relativo in imagens:
+    for relativo in imagens + ([video] if video else []):
         nome = relativo.rsplit("/", 1)[-1]
         h.update((pasta / nome).read_bytes())
     return h.hexdigest()[:12]
@@ -47,6 +53,7 @@ def ler_post(pasta):
         else ""
     )
     imagens = _imagens(pasta)
+    video = _video(pasta)
     return {
         "id": pasta.name,
         "numero": meta.get("numero"),
@@ -56,7 +63,8 @@ def ler_post(pasta):
         "alt": meta.get("alt", ""),
         "legenda": legenda,
         "imagens": imagens,
-        "versao": _versao(legenda, pasta, imagens),
+        "video": video,
+        "versao": _versao(legenda, pasta, imagens, video),
     }
 
 
@@ -72,7 +80,7 @@ def validar_post(post):
         erros.append(f"{pid}: numero deve ser inteiro maior que zero")
     faixa = FORMATOS.get(post.get("formato"))
     if faixa is None:
-        erros.append(f"{pid}: formato deve ser carrossel ou estatico")
+        erros.append(f"{pid}: formato deve ser carrossel, estatico ou reels")
     else:
         minimo, maximo = faixa
         n = len(post.get("imagens", []))
@@ -80,6 +88,10 @@ def validar_post(post):
             erros.append(
                 f"{pid}: {post['formato']} precisa de {minimo} a {maximo} imagem(ns), tem {n}"
             )
+    if post.get("formato") == "reels" and not post.get("video"):
+        erros.append(f"{pid}: reels precisa de {VIDEO} na pasta do post")
+    if post.get("video") and post.get("formato") != "reels":
+        erros.append(f"{pid}: {VIDEO} só vale para formato reels")
     legenda = post.get("legenda", "")
     if not legenda:
         erros.append(f"{pid}: legenda.md vazia ou ausente")
@@ -136,7 +148,7 @@ def publicar(pasta_mes, raiz_site, cliente):
         shutil.rmtree(destino)
     destino.mkdir(parents=True)
     for post in manifesto["posts"]:
-        for relativo in post["imagens"]:
+        for relativo in post["imagens"] + ([post["video"]] if post["video"] else []):
             alvo = destino / relativo
             alvo.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(pasta_mes / "posts" / relativo, alvo)

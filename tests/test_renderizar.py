@@ -5,6 +5,8 @@ import pytest
 
 from ferramentas.renderizar import (
     CHROME,
+    altura_do_slide,
+    capturar,
     dimensoes,
     ordenar_slides,
     renderizar,
@@ -54,3 +56,25 @@ def test_renderizar_post_apaga_jpg_sobrando(tmp_path):
 def test_post_sem_slides_da_erro(tmp_path):
     with pytest.raises(FileNotFoundError):
         renderizar_post(tmp_path)
+
+
+def test_altura_vem_do_body_ou_e_1350():
+    assert altura_do_slide('<body class="x" style="height:1920px;padding:0">') == 1920
+    assert altura_do_slide("<body style='margin:0;height:1350px'>") == 1350
+    assert altura_do_slide("<body><div style='height:900px'></div>") == 1350
+
+
+@pytest.mark.skipif(not TEM_CHROME, reason="precisa de Chrome e sips (macOS)")
+def test_renderizar_post_usa_altura_do_body(tmp_path):
+    (tmp_path / "slide-1.html").write_text(HTML.replace("1350px", "1920px"), encoding="utf-8")
+    assert dimensoes(renderizar_post(tmp_path)[0]) == (1080, 1920)
+
+
+@pytest.mark.skipif(not TEM_CHROME, reason="precisa de Chrome e sips (macOS)")
+def test_capturar_transparente_mantem_alfa(tmp_path):
+    html = tmp_path / "m.html"
+    html.write_text("<html><body style='margin:0;background:transparent'></body></html>", encoding="utf-8")
+    png = capturar(html, tmp_path / "m.png", 100, 100, transparente=True)
+    import subprocess
+    r = subprocess.run(["sips", "-g", "hasAlpha", str(png)], capture_output=True, text=True)
+    assert "hasAlpha: yes" in r.stdout

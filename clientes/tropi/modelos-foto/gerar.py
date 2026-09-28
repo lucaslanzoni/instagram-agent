@@ -16,6 +16,13 @@ Modelos e textos:
   adesivos      etiqueta, pilula              evento ao vivo, bastidor, stories do dia
 (O modelo "disco", foto dentro do vinil, foi descartado.)
 
+Reels (vídeo): em vez de "foto", o post-foto.json traz "video" e "capa":
+  {"modelo": "adesivos", "video": "original.mov", "textos": {"etiqueta": "...", "pilula": "..."},
+   "capa": {"modelo": "encarte", "foto": "capa-foto.jpg", "posicao": "50% 40%", "textos": {...}}}
+Gera moldura.html (camada transparente 1080x1920, fica o vídeo inteiro) e slide-1.html (capa
+1080x1920). Depois: `uv run python -m ferramentas.video <pasta>` e `... -m ferramentas.renderizar <pasta>`.
+Só o modelo "adesivos" serve de moldura: é o que menos cobre o vídeo.
+
 Uso
   uv run python clientes/tropi/modelos-foto/gerar.py clientes/tropi/2026-10/posts/10-feira-de-discos [--story]
 """
@@ -34,6 +41,7 @@ MODELOS = {
     "meio-a-meio": ("rotulo", "titulo", "cta"),
     "adesivos": ("etiqueta", "pilula"),
 }
+MODELOS_VIDEO = {"adesivos"}
 
 ESTILO = """<style>
 .foto { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
@@ -62,8 +70,12 @@ def logo(cor, h=58):
     return f'<img class="logo" style="height:{h}px" src="{M}/logo/final/logo/tropi-logo-{cor}.svg" alt="Tropi Discos">'
 
 
-def pagina(classe, conteudo, altura, padding=None):
-    estilo = f"height:{altura}px" + (f";padding:{padding}" if padding else "")
+def pagina(classe, conteudo, altura, padding=None, transparente=False):
+    estilo = (
+        f"height:{altura}px"
+        + (f";padding:{padding}" if padding else "")
+        + (";background:transparent" if transparente else "")
+    )
     return (
         cabecalho()
         + f'<body class="{classe}" style="{estilo}">\n{conteudo}\n</body></html>\n'
@@ -101,7 +113,7 @@ def encarte(foto, pos, t, story):
 <div class="bloco" style="gap:14px"><h2 class="ttl" style="max-width:18ch">{t["titulo"]}</h2><span class="micro">{t["apoio"]}</span></div>
 <div class="rodape"><span class="handle">@tropi_discos</span></div>''',
         h,
-        "260px 88px 420px" if story else "88px 88px 80px",
+        "300px 88px 380px" if story else "88px 88px 80px",
     )
 
 
@@ -121,17 +133,22 @@ def meio_a_meio(foto, pos, t, story):
     )
 
 
-def adesivos(foto, pos, t, story):
+def adesivos(foto, pos, t, story, elemento="em-cima"):
+    """Sem foto (foto=None), vira a moldura transparente de um vídeo.
+    elemento="embaixo" leva o sol-disco para o canto de baixo, quando em cima ele cobre um rosto."""
     h = 1920 if story else 1350
     y_ad, y_pil = (330, 440) if story else (110, 90)
+    sol = f"top:{y_ad - 40}px" if elemento != "embaixo" else f"bottom:{y_pil - 40}px"
+    imagem = f'<img class="foto" src="{foto}" style="object-position:{pos}">' if foto else ""
     return pagina(
-        "bg-creme cheia",
+        "bg-creme cheia" if foto else "cheia",
         f'''
-<img class="foto" src="{foto}" style="object-position:{pos}">
+{imagem}
 <div class="adesivo" style="left:70px;top:{y_ad}px;transform:rotate(-6deg)">{t["etiqueta"]}</div>
-<img class="elemento" src="{M}/elementos/sol-disco/fundo-creme/sol-02-sol-inteiro.svg" style="width:230px;right:40px;top:{y_ad - 40}px;z-index:4" alt="">
+<img class="elemento" src="{M}/elementos/sol-disco/fundo-creme/sol-02-sol-inteiro.svg" style="width:230px;right:40px;{sol};z-index:4" alt="">
 <div class="pilula" style="left:70px;bottom:{y_pil}px">{logo("creme", 40)}<span>{t["pilula"]}</span></div>''',
         h,
+        transparente=not foto,
     )
 
 
@@ -143,29 +160,56 @@ GERADORES = {
 }
 
 
-def gerar(pasta, story=False):
-    pasta = pathlib.Path(pasta)
-    spec = json.loads((pasta / "post-foto.json").read_text(encoding="utf-8"))
-    modelo = spec["modelo"]
+def _conferir(pasta, spec, com_foto=True):
+    modelo = spec.get("modelo")
     if modelo not in MODELOS:
         raise ValueError(f"modelo desconhecido: {modelo}. Use um de {sorted(MODELOS)}")
     faltando = [k for k in MODELOS[modelo] if not spec.get("textos", {}).get(k)]
     if faltando:
         raise ValueError(f"textos faltando para {modelo}: {faltando}")
+    textos = {k: html.escape(v) for k, v in spec["textos"].items()}
+    if not com_foto:
+        return GERADORES[modelo], None, textos
     foto = pasta / spec["foto"]
     if not foto.exists():
         raise FileNotFoundError(foto)
-    textos = {k: html.escape(v) for k, v in spec["textos"].items()}
-    fn = GERADORES[modelo]
+    return GERADORES[modelo], foto.resolve().as_uri(), textos
+
+
+def gerar_reels(pasta, spec):
+    if spec["modelo"] not in MODELOS_VIDEO:
+        raise ValueError(f"moldura de vídeo só com {sorted(MODELOS_VIDEO)}")
+    if not (pasta / spec["video"]).exists():
+        raise FileNotFoundError(pasta / spec["video"])
+    if not spec.get("capa"):
+        raise ValueError("reels precisa do campo capa (modelo, foto, textos)")
+    fn, _, textos = _conferir(pasta, spec, com_foto=False)
+    fn_capa, foto_capa, textos_capa = _conferir(pasta, spec["capa"])
+    moldura, capa = pasta / "moldura.html", pasta / "slide-1.html"
+    moldura.write_text(fn(None, "", textos, True), encoding="utf-8")
+    capa.write_text(
+        fn_capa(foto_capa, spec["capa"].get("posicao", "50% 40%"), textos_capa, True),
+        encoding="utf-8",
+    )
+    return [moldura, capa]
+
+
+def gerar(pasta, story=False):
+    pasta = pathlib.Path(pasta)
+    spec = json.loads((pasta / "post-foto.json").read_text(encoding="utf-8"))
+    if spec.get("video"):
+        return gerar_reels(pasta, spec)
+    fn, foto, textos = _conferir(pasta, spec)
+    extra = {"elemento": spec["elemento"]} if spec.get("elemento") else {}
     saidas = [pasta / "slide-1.html"]
     saidas[0].write_text(
-        fn(foto.resolve().as_uri(), spec.get("posicao", "50% 40%"), textos, False),
+        fn(foto, spec.get("posicao", "50% 40%"), textos, False, **extra),
         encoding="utf-8",
     )
     if story:
         saidas.append(pasta / "story.html")
         saidas[1].write_text(
-            fn(foto.resolve().as_uri(), spec.get("posicao", "50% 40%"), textos, True),
+            fn(foto, spec.get("posicao", "50% 40%"), textos, True, **extra),
             encoding="utf-8",
         )
     return saidas

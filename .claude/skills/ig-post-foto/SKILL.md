@@ -1,6 +1,6 @@
 ---
 name: ig-post-foto
-description: Produz um post de Instagram a partir de uma foto (enviada pelo cliente, de banco gratuito ou do Canva) aplicando um dos modelos aprovados de texto e elementos da marca. Usar quando a pauta tiver um post com foto ou quando Lucas mandar uma imagem para virar post.
+description: Produz um post de Instagram a partir de uma foto ou de um vídeo (enviado pelo cliente, de banco gratuito ou do Canva) aplicando um dos modelos aprovados de texto e elementos da marca; vídeo vira Reels com moldura e capa. Usar quando a pauta tiver um post com foto ou vídeo, ou quando Lucas mandar uma imagem ou vídeo para virar post.
 ---
 
 # ig-post-foto
@@ -34,3 +34,10 @@ aprovados; na Tropi estão em `clientes/tropi/modelos-foto/` (regras em `README.
 7. Legenda com `ig-legenda`. Nunca inventar @ de parceiro: se o @ não for confirmado, usar
    `{{@ a confirmar}}` e perguntar a Lucas.
 8. Seguir para `ig-entrega`.
+
+## Vídeo (Reels)
+
+Seguir a seção "Reels" do `README.md` dos modelos do cliente. Em resumo: `post.json` com
+`"formato": "reels"`; `post-foto.json` com `video` e `capa`; gerar, renderizar a capa e rodar
+`uv run python -m ferramentas.video <pasta-do-post>`. A página de aprovação mostra o vídeo com a capa
+e entrega o MP4 e a capa no download.

@@ -122,6 +122,15 @@ test('montarAprovacao exporta a versão de cada entrada', () => {
   assert.deepEqual(dados.posts, { '02-b': { status: 'aprovado', versao: 'v9' } });
 });
 
+test('reels precisa de vídeo e arquivosDoPost inclui o vídeo', () => {
+  const reels = { id: '12-r', numero: 3, formato: 'reels', imagens: ['12-r/1.jpg'], video: '12-r/video.mp4', legenda: 'L' };
+  assert.deepEqual(validarManifesto({ cliente: 'demo', mes: '2026-01', posts: [reels] }), []);
+  const semVideo = validarManifesto({ cliente: 'demo', mes: '2026-01', posts: [{ ...reels, video: null }] });
+  assert.ok(semVideo.some((e) => e.includes('reels sem vídeo')));
+  assert.deepEqual(arquivosDoPost(reels, {}).video, { src: '12-r/video.mp4', nome: '12-r/video.mp4' });
+  assert.equal(arquivosDoPost(posts[0], {}).video, null);
+});
+
 test('arquivosDoPost nomeia imagens e legenda final', () => {
   const arq = arquivosDoPost(posts[0], { '01-a': { legenda_editada: 'Editada' } });
   assert.deepEqual(arq.imagens, [

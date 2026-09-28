@@ -21,8 +21,7 @@ Descartado: `disco` (foto dentro do rótulo do vinil).
   vinil, toca-discos, loja de discos, feira. Conferir a licença de cada imagem e registrar a fonte em
   `post-foto.json` (campo `fonte`).
 - Imagens e vídeos do Canva que tenham pessoas com disco de vinil, baixados pela conta de Lucas.
-- Vídeo: permitido como fonte, mas o fluxo de renderização atual só gera imagem (JPG). Vídeo entra quando
-  o agente passar a produzir Reels.
+- Vídeo: vira Reels com moldura da marca (ver "Reels" abaixo).
 
 ## Regras de composição
 
@@ -31,6 +30,33 @@ Descartado: `disco` (foto dentro do rótulo do vinil).
   até o assunto ficar livre.
 - No story, nada importante nas faixas de cima e de baixo que o Instagram cobre.
 - Um elemento da marca por peça, no máximo.
+- No `adesivos`, se o sol-disco cobrir um rosto no canto de cima, usar `"elemento": "embaixo"` no
+  `post-foto.json`: o sol vai para o canto de baixo, ao lado da pílula.
+
+## Reels (vídeo com moldura)
+
+Aprovado por Lucas em 2026-09-28: a moldura fica **o vídeo inteiro**, e todo Reels tem uma **capa** desenhada.
+
+- Moldura: modelo `adesivos` (etiqueta goiaba em cima, sol-disco, pílula café com o logo embaixo), em camada
+  transparente 1080x1920 sobre o vídeo. É o modelo que menos cobre o vídeo; os outros não servem de moldura.
+- Capa: 1080x1920 com qualquer modelo de foto, feita com um quadro nítido do vídeo
+  (`ffmpeg -ss <segundo> -i original.mov -frames:v 1 -q:v 2 capa-foto.jpg`). Logo e título ficam dentro do
+  corte 4:5 da grade (entre 285 e 1635 px de altura).
+- Saída: `video.mp4` (H.264 + AAC, 1080x1920, `+faststart`) e `1.jpg` (a capa). O post leva `"formato": "reels"`.
+
+```
+{"modelo": "adesivos", "video": "original.mov", "fonte": "enviado por Lucas",
+ "textos": {"etiqueta": "...", "pilula": "..."},
+ "capa": {"modelo": "encarte", "foto": "capa-foto.jpg", "posicao": "50% 35%",
+          "textos": {"rotulo": "...", "titulo": "...", "apoio": "..."}}}
+```
+
+1. `uv run python clientes/tropi/modelos-foto/gerar.py <pasta-do-post>` (gera `moldura.html` e `slide-1.html`)
+2. `uv run python -m ferramentas.renderizar <pasta-do-post>` (capa)
+3. `uv run python -m ferramentas.video <pasta-do-post>` (moldura em PNG transparente + `video.mp4`)
+4. Assistir ao `video.mp4` e conferir um quadro: nada importante coberto, texto fora das faixas do Reels.
+
+Os vídeos (`original.*`, `video.mp4`) ficam fora do git na pasta do post; só a cópia publicada no site entra.
 
 ## Como gerar
 
