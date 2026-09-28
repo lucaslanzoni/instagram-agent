@@ -78,6 +78,7 @@ A voz é constante; o tom muda.
 - corre
 - oferta
 - promoção
+- girando no prato
 
 ## Exemplos
 
